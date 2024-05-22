@@ -3,9 +3,9 @@ class Client {
     String nom
     String prénom 
     String adresse
-    long numTel 
+    String numTel 
     Mail email
-    long numCb
+    String numCb
     String immat
 }
 
