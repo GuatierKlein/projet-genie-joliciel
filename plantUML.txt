@@ -3,9 +3,10 @@ class Client {
     String nom
     String prénom 
     String adresse
-    String numTel 
+<<<<<<< HEAD
+    long numTel 
     Mail email
-    String numCb
+    long numCb
     String immat
 }
 
@@ -44,6 +45,7 @@ class Reservation {
     int idBorne;
 }
 
+<<<<<<< HEAD
 class Interpreter {
 
 }
@@ -57,6 +59,8 @@ class App {
     
 }
 
+=======
+>>>>>>> a2a8efa (Create class Client + Mail)
 enum EResEtat {
     EnCours,
     Terminee,

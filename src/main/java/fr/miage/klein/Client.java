@@ -1,15 +1,13 @@
 package fr.miage.klein;
 
-import java.util.HashSet;
-
 public class Client {
     private String prenom;
     private String nom;
     private String adresse;
     private String numTel;
     private Mail email;
-    private String numCb;
-    private HashSet<String> immat;
+    private long numCb;
+    private String immat;
 
 
     public String getPrenom() {
@@ -44,27 +42,23 @@ public class Client {
         this.email = email;
     }
 
-    public String getNumCb() {
+    public long getNumCb() {
         return this.numCb;
     }
 
-    public void setNumCb(String numCb) {
+    public void setNumCb(long numCb) {
         this.numCb = numCb;
     }
 
-    public HashSet getImmat() {
+    public String getImmat() {
         return this.immat;
     }
 
-    public void setImmat(HashSet immat) {
+    public void setImmat(String immat) {
         this.immat = immat;
     }
 
-    public boolean contains(String immat){
-       return this.immat.contains(immat);
-    }
-
-    public Client(String prenom, String nom, String adresse, String numTel, Mail email, String numCb, HashSet immat) {
+    public Client(String prenom, String nom, String adresse, String numTel, Mail email, long numCb, String immat) {
         this.prenom = prenom;
         this.nom = nom;
         this.adresse = adresse;
@@ -74,7 +68,7 @@ public class Client {
         this.immat = immat;
     }
 
-    public Client(String prenom, String nom, String adresse, String numTel, Mail email, String numCb) {
+    public Client(String prenom, String nom, String adresse, String numTel, Mail email, long numCb) {
         this.prenom = prenom;
         this.nom = nom;
         this.adresse = adresse;
