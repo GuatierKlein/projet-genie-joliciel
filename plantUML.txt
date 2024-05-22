@@ -3,9 +3,15 @@ class Client {
     String nom
     String prénom 
     String adresse
+<<<<<<< HEAD
     long numTel 
     Mail email
     long numCb
+=======
+    String numTel 
+    Mail email
+    String numCb
+>>>>>>> a2a8efa (Create class Client + Mail)
     String immat
 }
 
@@ -41,6 +47,7 @@ class Reservation {
     EResEtat etat
 }
 
+<<<<<<< HEAD
 class Interpreter {
 
 }
@@ -54,6 +61,8 @@ class App {
     
 }
 
+=======
+>>>>>>> a2a8efa (Create class Client + Mail)
 enum EResEtat {
 
 }
