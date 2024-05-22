@@ -45,6 +45,11 @@ class Interpreter {
 
 }
 
+class Command {
+    String command 
+    String[] args
+}
+
 class App {
     
 }
