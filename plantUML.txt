@@ -10,7 +10,7 @@ class Client {
 }
 
 class Mail {
-
+    String value
 }
 
 enum EBorneEtat {
@@ -39,6 +39,14 @@ class Reservation {
     Datetime datetime 
     int duree 
     EResEtat etat
+}
+
+class Interpreter {
+
+}
+
+class App {
+    
 }
 
 enum EResEtat {
