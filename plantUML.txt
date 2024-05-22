@@ -1,0 +1,54 @@
+@startuml
+class Client {
+    String nom
+    String prénom 
+    String adresse
+    long numTel 
+    Mail email
+    long numCb
+    String immat
+}
+
+class Mail {
+
+}
+
+enum EBorneEtat {
+    disponible,
+    indisponible,
+    reservee,
+    occupee
+}
+
+class Borne {
+    int id
+    EBorneEtat etat 
+}
+
+class Transaction {
+
+}
+
+class Facture {
+    float montant
+    Datetime datetime 
+}
+
+class Reservation {
+    int id 
+    Datetime datetime 
+    int duree 
+    EResEtat etat
+}
+
+enum EResEtat {
+
+}
+
+Client "*" -- "1" Mail
+Reservation "*" -- "1" Client 
+Reservation "*" -- "1" Borne 
+Transaction "*" -- "1" Client
+Facture "0..1" -- "1" Transaction
+
+@enduml
