@@ -18,6 +18,7 @@ public class Interpreter {
         switch (args[0]) {
             case "client":
                 Creator.createClientInteractive();
+                //add to db
                 break;
         
             default:
