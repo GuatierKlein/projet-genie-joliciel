@@ -6,7 +6,7 @@ public class Client {
     private String adresse;
     private String numTel;
     private Mail email;
-    private long numCb;
+    private String numCb;
     private String immat;
 
 
@@ -42,11 +42,11 @@ public class Client {
         this.email = email;
     }
 
-    public long getNumCb() {
+    public String getNumCb() {
         return this.numCb;
     }
 
-    public void setNumCb(long numCb) {
+    public void setNumCb(String numCb) {
         this.numCb = numCb;
     }
 
@@ -58,7 +58,7 @@ public class Client {
         this.immat = immat;
     }
 
-    public Client(String prenom, String nom, String adresse, String numTel, Mail email, long numCb, String immat) {
+    public Client(String prenom, String nom, String adresse, String numTel, Mail email, String numCb, String immat) {
         this.prenom = prenom;
         this.nom = nom;
         this.adresse = adresse;
@@ -68,7 +68,7 @@ public class Client {
         this.immat = immat;
     }
 
-    public Client(String prenom, String nom, String adresse, String numTel, Mail email, long numCb) {
+    public Client(String prenom, String nom, String adresse, String numTel, Mail email, String numCb) {
         this.prenom = prenom;
         this.nom = nom;
         this.adresse = adresse;
