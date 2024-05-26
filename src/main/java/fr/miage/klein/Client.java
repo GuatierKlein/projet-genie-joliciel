@@ -1,5 +1,7 @@
 package fr.miage.klein;
 
+import java.util.HashSet;
+
 public class Client {
     private String prenom;
     private String nom;
@@ -7,7 +9,7 @@ public class Client {
     private String numTel;
     private Mail email;
     private String numCb;
-    private String immat;
+    private HashSet immat;
 
 
     public String getPrenom() {
@@ -50,15 +52,15 @@ public class Client {
         this.numCb = numCb;
     }
 
-    public String getImmat() {
+    public HashSet getImmat() {
         return this.immat;
     }
 
-    public void setImmat(String immat) {
+    public void setImmat(HashSet immat) {
         this.immat = immat;
     }
 
-    public Client(String prenom, String nom, String adresse, String numTel, Mail email, String numCb, String immat) {
+    public Client(String prenom, String nom, String adresse, String numTel, Mail email, String numCb, HashSet immat) {
         this.prenom = prenom;
         this.nom = nom;
         this.adresse = adresse;
