@@ -1,4 +1,4 @@
-package fr.miage.klein;
+package fr.miage.klein.BusinessLogic;
 
 import java.sql.Time;
 import java.time.LocalDateTime;

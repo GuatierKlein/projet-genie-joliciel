@@ -2,6 +2,8 @@ package fr.miage.klein;
 
 import java.util.Scanner;
 
+import fr.miage.klein.CLI.Command;
+import fr.miage.klein.CLI.Interpreter;
 import fr.miage.klein.Controller.IDatabaseController;
 import fr.miage.klein.Mocks.DBMock;
 

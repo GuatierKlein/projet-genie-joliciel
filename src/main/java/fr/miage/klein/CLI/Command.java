@@ -1,4 +1,4 @@
-package fr.miage.klein;
+package fr.miage.klein.CLI;
 
 public class Command {
     private String command; 

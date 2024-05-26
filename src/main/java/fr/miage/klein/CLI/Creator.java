@@ -1,7 +1,10 @@
-package fr.miage.klein;
+package fr.miage.klein.CLI;
 
 import java.text.ParseException;
 import java.util.Scanner;
+
+import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.Mail;
 
 public class Creator {
     public static Client createClientInteractive() throws ParseException {

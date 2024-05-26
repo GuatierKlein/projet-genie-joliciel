@@ -1,7 +1,8 @@
-package fr.miage.klein;
+package fr.miage.klein.CLI;
 
 import java.text.ParseException;
 
+import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class Interpreter {

@@ -1,4 +1,4 @@
-package fr.miage.klein;
+package fr.miage.klein.BusinessLogic;
 
 public class Client {
     private String prenom;
