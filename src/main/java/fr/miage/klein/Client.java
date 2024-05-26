@@ -9,7 +9,7 @@ public class Client {
     private String numTel;
     private Mail email;
     private String numCb;
-    private HashSet immat;
+    private HashSet<String> immat;
 
 
     public String getPrenom() {
@@ -58,6 +58,10 @@ public class Client {
 
     public void setImmat(HashSet immat) {
         this.immat = immat;
+    }
+
+    public boolean contains(String immat){
+       return this.immat.contains(immat);
     }
 
     public Client(String prenom, String nom, String adresse, String numTel, Mail email, String numCb, HashSet immat) {

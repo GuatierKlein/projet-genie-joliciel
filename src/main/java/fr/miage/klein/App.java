@@ -14,7 +14,7 @@ public class App {
 
         System.out.println("Veuillez saisir votre immatriculation");
         String saisiePlaque = sc.next();
-        boolean vehiculePerso = client.getImmat() != null ? client.getImmat().equalsIgnoreCase(saisiePlaque) : false; 
+        boolean vehiculePerso = client.getImmat() != null ? client.contains(saisiePlaque) : false; 
     
         // Simulation des différents scénarios aboutissant à une facturation
         // Il faudra intégrer plus tard les réservations, pour l'instant on simule 
