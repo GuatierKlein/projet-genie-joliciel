@@ -5,8 +5,13 @@ import java.text.ParseException;
 public class Interpreter {
     public void execute(Command command) {
         switch (command.getCommand()) {
+            case "": break;
             case "create":
-                create(command.getArgs());
+                try {
+                    create(command.getArgs());
+                } catch (ParseException e) {
+                    System.out.println("Saisie échouée");
+                }
                 break;
             case "help":
                 help();
@@ -27,7 +32,7 @@ public class Interpreter {
         System.out.println("**********");
     }
 
-    private void create(String[] args) {
+    private void create(String[] args) throws ParseException {
         if(args.length == 0)
             throw new IllegalArgumentException("Arguments invalides");
         switch (args[0]) {
@@ -35,12 +40,8 @@ public class Interpreter {
                 helpCreate();
                 break;
             case "client":
-                try {
-                    Creator.createClientInteractive();
-                    //add to db
-                } catch (ParseException e) {
-                    System.out.println("Valeurs saisies invalides");
-                }
+                Creator.createClientInteractive();
+                //add to db
                 break;
         
             default:

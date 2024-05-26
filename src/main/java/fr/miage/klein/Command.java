@@ -12,8 +12,10 @@ public class Command {
         
         command = splitLine[0];
         
-        if(splitLine.length > 1)
+        if(splitLine.length > 1) {
+            args = new String[splitLine.length - 1];
             System.arraycopy(splitLine, 1, args, 0, splitLine.length - 1);
+        }  
     }
 
     public String getCommand() {
