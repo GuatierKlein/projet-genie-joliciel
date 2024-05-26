@@ -39,6 +39,9 @@ class Reservation {
     Datetime datetime 
     int duree 
     EResEtat etat
+    Mail mailClient;
+    String immat;
+    int idBorne;
 }
 
 class Interpreter {
@@ -50,7 +53,9 @@ class App {
 }
 
 enum EResEtat {
-
+    EnCours,
+    Terminee,
+    EnAttente
 }
 
 Client "*" -- "1" Mail
