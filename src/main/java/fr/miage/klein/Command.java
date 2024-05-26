@@ -5,6 +5,7 @@ public class Command {
     private String[] args;
 
     public Command(String commandLine) {
+        commandLine = commandLine.trim();
         String[] splitLine = commandLine.split(" ");
         if(splitLine.length == 0)
             return;
