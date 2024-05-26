@@ -22,4 +22,12 @@ public class Creator {
         in.close();
         return new Client(prenom, nom, adresse, numTel, email, numCb); 
     }
+
+    public static void helpCreate() {
+        System.out.println("Commande create");
+        System.out.println("**********");
+        System.out.println("* create help : afficher l'aide sur la commande créer");
+        System.out.println("* create client : créer un nouveau client en mode interactif");
+        System.out.println("**********");
+    }
 }

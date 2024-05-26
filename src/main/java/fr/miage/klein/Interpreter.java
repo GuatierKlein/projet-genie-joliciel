@@ -37,7 +37,7 @@ public class Interpreter {
             throw new IllegalArgumentException("Arguments invalides");
         switch (args[0]) {
             case "help":
-                helpCreate();
+                Creator.helpCreate();
                 break;
             case "client":
                 Creator.createClientInteractive();
@@ -47,13 +47,5 @@ public class Interpreter {
             default:
             throw new IllegalArgumentException("Arguments invalides");
         }
-    }
-
-    private void helpCreate() {
-        System.out.println("Commande create");
-        System.out.println("**********");
-        System.out.println("* create help : afficher l'aide sur la commande créer");
-        System.out.println("* create client : créer un nouveau client en mode interactif");
-        System.out.println("**********");
     }
 }
