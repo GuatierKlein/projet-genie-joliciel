@@ -2,7 +2,15 @@ package fr.miage.klein;
 
 import java.text.ParseException;
 
+import fr.miage.klein.Controller.IDatabaseController;
+
 public class Interpreter {
+    private final IDatabaseController db;
+    
+    public Interpreter(IDatabaseController db) {
+        this.db = db;
+    }
+
     public void execute(Command command) {
         switch (command.getCommand()) {
             case "": break;
@@ -40,8 +48,8 @@ public class Interpreter {
                 Creator.helpCreate();
                 break;
             case "client":
-                Creator.createClientInteractive();
-                //add to db
+                Client newClient = Creator.createClientInteractive();
+                db.addClient(newClient);
                 break;
         
             default:
