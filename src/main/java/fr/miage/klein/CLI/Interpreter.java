@@ -58,8 +58,8 @@ public class Interpreter {
                 default:
                 throw new IllegalArgumentException("Arguments invalides");
             }
-        } catch (ParseException e) {
-            System.out.println("Saisie invalide");
+        } catch (Exception e) {
+            System.out.println("Saisie invalide ou erreur");
         }
 
     }
