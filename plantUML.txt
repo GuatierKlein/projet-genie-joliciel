@@ -3,15 +3,9 @@ class Client {
     String nom
     String prénom 
     String adresse
-<<<<<<< HEAD
-    long numTel 
-    Mail email
-    long numCb
-=======
     String numTel 
     Mail email
     String numCb
->>>>>>> a2a8efa (Create class Client + Mail)
     String immat
 }
 
@@ -36,8 +30,16 @@ class Transaction {
 }
 
 class Facture {
-    float montant
-    Datetime datetime 
+    LocalDateTime dateFacture;
+    Frais fraisRecharge;
+    Frais fraisReservation;
+    Frais fraisPenalite;
+    Frais fraisProlongation; 
+}
+
+class Frais {
+    Float montant
+    String devise
 }
 
 class Reservation {
@@ -50,8 +52,19 @@ class Reservation {
     int idBorne;
 }
 
-<<<<<<< HEAD
 class Interpreter {
+
+}
+
+class Creator {
+
+}
+
+class DBMock {
+    
+}
+
+interface IDatabaseController {
 
 }
 
@@ -64,8 +77,6 @@ class App {
     
 }
 
-=======
->>>>>>> a2a8efa (Create class Client + Mail)
 enum EResEtat {
     EnCours,
     Terminee,
@@ -77,5 +88,6 @@ Reservation "*" -- "1" Client
 Reservation "*" -- "1" Borne 
 Transaction "*" -- "1" Client
 Facture "0..1" -- "1" Transaction
+Facture "*" -- "1" Frais
 
 @enduml
