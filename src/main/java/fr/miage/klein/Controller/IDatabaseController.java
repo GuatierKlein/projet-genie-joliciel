@@ -22,7 +22,7 @@ public interface IDatabaseController {
     public void addFacture(Facture facture);
 
     //réservations
-    public Client getReservation(int id);
+    public Reservation getReservation(int id);
     public List<Reservation> getReservations();
     public void deleteReservation();
     public void updateReservation(Reservation reservation);
