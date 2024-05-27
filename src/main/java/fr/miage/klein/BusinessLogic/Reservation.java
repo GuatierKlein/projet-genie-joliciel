@@ -11,7 +11,6 @@ public class Reservation {
     String immat;
     int idBorne;
 
-
     public Reservation(int id, LocalDateTime datetime, int duree, EResEtat etat, Mail mailClient, String immat, int idBorne) {
         this.id = id;
         this.datetime = datetime;
