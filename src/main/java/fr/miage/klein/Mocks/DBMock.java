@@ -70,7 +70,7 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public Client getReservation(int id) {
+    public Reservation getReservation(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
     }
