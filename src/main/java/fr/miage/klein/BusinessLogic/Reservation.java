@@ -85,4 +85,8 @@ public class Reservation {
         this.idBorne = idBorne;
     }
 
+    public boolean isValidForAccess() {
+        return getDatetime().isBefore(LocalDateTime.now()) || LocalDateTime.now().isAfter(getDatetime().plusMinutes(10));
+    }
+
 }
