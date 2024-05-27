@@ -37,20 +37,19 @@ public class Creator {
         LocalDateTime time = LocalDateTime.parse(in.nextLine());
         System.out.print("Durée : ");
         int duree = Integer.parseInt(in.nextLine());
-        System.out.println("Immatriculation : ");
+        System.out.print("Immatriculation : ");
         String immat = in.nextLine();
 
         in.close();
-        return new Reservation();
+        return new Reservation(time, duree, mail, immat);
     }
-
-    //public Reservation(int id, LocalDateTime datetime, int duree, EResEtat etat, Mail mailClient, String immat, int idBorne)
 
     public static void helpCreate() {
         System.out.println("Commande create");
         System.out.println("**********");
         System.out.println("* create help : afficher l'aide sur la commande créer");
         System.out.println("* create client : créer un nouveau client en mode interactif");
+        System.out.println("* create reservation : créer une nouvelle reservation en mode interactif");
         System.out.println("**********");
     }
 }

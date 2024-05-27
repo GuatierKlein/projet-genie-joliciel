@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Reservation {
     private int id;
     private LocalDateTime datetime;
-    private int duree;
+    private int duree; //en minute
     private EResEtat etat;
     private Mail mailClient;
     private String immat;
