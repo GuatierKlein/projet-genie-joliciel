@@ -16,11 +16,7 @@ public class Interpreter {
         switch (command.getCommand()) {
             case "": break;
             case "create":
-                try {
-                    create(command.getArgs());
-                } catch (ParseException e) {
-                    System.out.println("Saisie échouée");
-                }
+                create(command.getArgs());
                 break;
             case "help":
                 help();
@@ -41,20 +37,26 @@ public class Interpreter {
         System.out.println("**********");
     }
 
-    private void create(String[] args) throws ParseException {
+    private void create(String[] args) {
         if(args.length == 0)
             throw new IllegalArgumentException("Arguments invalides");
-        switch (args[0]) {
-            case "help":
-                Creator.helpCreate();
-                break;
-            case "client":
-                Client newClient = Creator.createClientInteractive();
-                db.addClient(newClient);
-                break;
-        
-            default:
-            throw new IllegalArgumentException("Arguments invalides");
+
+        try {
+            switch (args[0]) {
+                case "help":
+                    Creator.helpCreate();
+                    break;
+                case "client":
+                    Client newClient = Creator.createClientInteractive();
+                    db.addClient(newClient);
+                    break;
+            
+                default:
+                throw new IllegalArgumentException("Arguments invalides");
+            }
+        } catch (ParseException e) {
+            System.out.println("Saisie invalide");
         }
+
     }
 }
