@@ -11,6 +11,7 @@ public class Reservation {
     private String immat;
     private int idBorne;
 
+//faire autre constructeur qui prend un DTO
     public Reservation(int id, LocalDateTime datetime, int duree, EResEtat etat, Mail mailClient, String immat, int idBorne) {
         this.id = id;
         this.datetime = datetime;

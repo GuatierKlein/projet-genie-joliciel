@@ -3,6 +3,7 @@ package fr.miage.klein.CLI;
 import java.text.ParseException;
 
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class Interpreter {
@@ -50,7 +51,10 @@ public class Interpreter {
                     Client newClient = Creator.createClientInteractive();
                     db.addClient(newClient);
                     break;
-            
+                case "reservation":
+                    Reservation reserv = Creator.createReservationIntractive();
+                    db.addReservation(reserv);
+                    break;
                 default:
                 throw new IllegalArgumentException("Arguments invalides");
             }
