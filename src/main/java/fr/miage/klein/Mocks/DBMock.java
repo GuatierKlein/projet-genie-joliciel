@@ -98,5 +98,17 @@ public class DBMock implements IDatabaseController {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'addReservation'");
     }
+
+    @Override
+    public boolean existsImmat(String immat) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'existsImmat'");
+    }
+
+    @Override
+    public List<Reservation> getReservationsFromImmat(String immat) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservationsFromImmat'");
+    }
     
 }

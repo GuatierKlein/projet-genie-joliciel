@@ -7,9 +7,9 @@ public class ParkAccessImmat extends ParkAccess {
     
     public ParkAccessImmat(String value, IDatabaseController db) throws Exception {
         accessValue = value;
-        Reservation res = db.getReservation(Integer.parseInt(value));
-        if(res == null)
-            throw new Exception("Reservation non valide");
+
+        if(!db.existsImmat(value))
+            throw new Exception("Immatriculation non valide");
 
         //vérifier validité réservation
 

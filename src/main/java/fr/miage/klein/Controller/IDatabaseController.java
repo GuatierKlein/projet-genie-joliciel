@@ -27,4 +27,8 @@ public interface IDatabaseController {
     public void deleteReservation();
     public void updateReservation(Reservation reservation);
     public void addReservation(Reservation reservation);
+
+    //immat 
+    public boolean existsImmat(String immat);
+    public List<Reservation> getReservationsFromImmat(String immat);
 }
