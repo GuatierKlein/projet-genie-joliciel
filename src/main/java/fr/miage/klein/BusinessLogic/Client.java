@@ -7,7 +7,7 @@ public class Client {
     private String numTel;
     private Mail email;
     private long numCb;
-    private String immat;
+    private Immatriculation immat;
 
 
     public String getPrenom() {
@@ -50,15 +50,15 @@ public class Client {
         this.numCb = numCb;
     }
 
-    public String getImmat() {
+    public Immatriculation getImmat() {
         return this.immat;
     }
 
-    public void setImmat(String immat) {
+    public void setImmat(Immatriculation immat) {
         this.immat = immat;
     }
 
-    public Client(String prenom, String nom, String adresse, String numTel, Mail email, long numCb, String immat) {
+    public Client(String prenom, String nom, String adresse, String numTel, Mail email, long numCb, Immatriculation immat) {
         this.prenom = prenom;
         this.nom = nom;
         this.adresse = adresse;

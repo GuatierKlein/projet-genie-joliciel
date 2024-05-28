@@ -8,10 +8,10 @@ public class Reservation {
     private int duree;
     private EResEtat etat;
     private Mail mailClient;
-    private String immat;
+    private Immatriculation immat;
     private int idBorne;
 
-    public Reservation(NumReservation id, LocalDateTime datetime, int duree, EResEtat etat, Mail mailClient, String immat, int idBorne) {
+    public Reservation(NumReservation id, LocalDateTime datetime, int duree, EResEtat etat, Mail mailClient, Immatriculation immat, int idBorne) {
         this.id = id;
         this.datetime = datetime;
         this.duree = duree;
@@ -21,7 +21,7 @@ public class Reservation {
         this.idBorne = idBorne;
     }
 
-    public Reservation(LocalDateTime datetime, int duree, Mail mailClient, String immat) {
+    public Reservation(LocalDateTime datetime, int duree, Mail mailClient, Immatriculation immat) {
         this.datetime = datetime;
         this.duree = duree;
         this.mailClient = mailClient;
@@ -68,11 +68,11 @@ public class Reservation {
         this.mailClient = mailClient;
     }
 
-    public String getImmat() {
+    public Immatriculation getImmat() {
         return this.immat;
     }
 
-    public void setImmat(String immat) {
+    public void setImmat(Immatriculation immat) {
         this.immat = immat;
     }
 
