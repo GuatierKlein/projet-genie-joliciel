@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.EResEtat;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
@@ -100,8 +101,7 @@ public class DBMock implements IDatabaseController {
 
     @Override
     public Reservation getReservation(NumReservation id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
+        return new Reservation(id, LocalDateTime.now().plusMinutes(5), 60, EResEtat.EnAttente, new Mail("klein_gautier@yahoo.fr"), new Immatriculation("AA-229-AA"), 3);
     }
 
     @Override
