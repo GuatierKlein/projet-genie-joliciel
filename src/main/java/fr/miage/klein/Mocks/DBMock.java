@@ -1,10 +1,13 @@
 package fr.miage.klein.Mocks;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
+import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
@@ -103,14 +106,15 @@ public class DBMock implements IDatabaseController {
 
     @Override
     public boolean existsImmat(Immatriculation immat) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'existsImmat'");
+        return true;
     }
 
     @Override
     public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservationsFromImmat'");
+        ArrayList<Reservation> res = new ArrayList<>();
+        
+        res.add(new Reservation(LocalDateTime.now().plusMinutes(5), 60, new Mail("klein_gautier@yahoo.fr"), immat));
+        return res;
     }
     
 }
