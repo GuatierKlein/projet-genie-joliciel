@@ -12,9 +12,6 @@ public class ParkAccessImmat extends ParkAccess {
     public ParkAccessImmat(Immatriculation value, IDatabaseController db) throws Exception {
         super(db);
         this.value = value;
-
-
-
     }
 
     private boolean isOneResValid(List<Reservation> reservations) {
@@ -27,7 +24,7 @@ public class ParkAccessImmat extends ParkAccess {
 
     @Override
     public boolean validate() {
-        if(!db.existsImmat(value))
+        if(!db.existsImmat(value) && !db.isPresent(value))
             return false;
 
         List<Reservation> res = db.getReservationsFromImmat(value);
@@ -36,4 +33,8 @@ public class ParkAccessImmat extends ParkAccess {
         return true;
     }
 
+    @Override
+    public void save() {
+        db.addPresence(value);
+    }
 }

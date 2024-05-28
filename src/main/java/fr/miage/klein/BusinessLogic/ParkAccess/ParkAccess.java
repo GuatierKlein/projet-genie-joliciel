@@ -10,5 +10,6 @@ public abstract class ParkAccess {
     }
 
     public abstract boolean validate();
+    public abstract void save();
 }
 

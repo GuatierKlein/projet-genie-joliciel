@@ -18,6 +18,12 @@ public class ParkAccessRes extends ParkAccess {
         if(res == null)
             return false;
 
-        return res.isValidForAccess();
+        return res.isValidForAccess() && !db.isPresent(res.getImmat());
+    }
+
+    @Override
+    public void save() {
+        Reservation res = db.getReservation(value);
+        db.addPresence(res.getImmat());
     }
 }
