@@ -112,8 +112,6 @@ public class Interpreter {
     }
 
     private void leave(String[] args) throws Exception {
-        ParkAccess access;
-
         switch (args[0]) {
             case "immat":
                 if(args.length < 2 || args.length > 2)
