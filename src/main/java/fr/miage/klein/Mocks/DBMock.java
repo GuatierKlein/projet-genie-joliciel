@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Facture;
+import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
@@ -70,7 +71,7 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public Client getReservation(int id) {
+    public Client getReservation(NumReservation id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
     }

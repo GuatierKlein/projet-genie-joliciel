@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Facture;
+import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation;
 
 public interface IDatabaseController {
@@ -22,7 +23,7 @@ public interface IDatabaseController {
     public void addFacture(Facture facture);
 
     //réservations
-    public Client getReservation(int id);
+    public Client getReservation(NumReservation id);
     public List<Reservation> getReservations();
     public void deleteReservation();
     public void updateReservation(Reservation reservation);

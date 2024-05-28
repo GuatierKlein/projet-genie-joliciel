@@ -3,7 +3,7 @@ package fr.miage.klein.BusinessLogic;
 import java.time.LocalDateTime;
 
 public class Reservation {
-    private int id;
+    private NumReservation id;
     private LocalDateTime datetime;
     private int duree;
     private EResEtat etat;
@@ -11,7 +11,7 @@ public class Reservation {
     private String immat;
     private int idBorne;
 
-    public Reservation(int id, LocalDateTime datetime, int duree, EResEtat etat, Mail mailClient, String immat, int idBorne) {
+    public Reservation(NumReservation id, LocalDateTime datetime, int duree, EResEtat etat, Mail mailClient, String immat, int idBorne) {
         this.id = id;
         this.datetime = datetime;
         this.duree = duree;
@@ -28,11 +28,11 @@ public class Reservation {
         this.immat = immat;
     }
 
-    public int getId() {
+    public NumReservation getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(NumReservation id) {
         this.id = id;
     }
 
