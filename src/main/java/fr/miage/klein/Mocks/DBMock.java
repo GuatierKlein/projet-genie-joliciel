@@ -1,9 +1,14 @@
 package fr.miage.klein.Mocks;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.EResEtat;
 import fr.miage.klein.BusinessLogic.Facture;
+import fr.miage.klein.BusinessLogic.Immatriculation;
+import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
@@ -71,12 +76,6 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public Client getReservation(NumReservation id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
-    }
-
-    @Override
     public List<Reservation> getReservations() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReservations'");
@@ -98,6 +97,24 @@ public class DBMock implements IDatabaseController {
     public void addReservation(Reservation reservation) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'addReservation'");
+    }
+
+    @Override
+    public Reservation getReservation(NumReservation id) {
+        return new Reservation(id, LocalDateTime.now().plusMinutes(5), 60, EResEtat.EnAttente, new Mail("klein_gautier@yahoo.fr"), new Immatriculation("AA-229-AA"), 3);
+    }
+
+    @Override
+    public boolean existsImmat(Immatriculation immat) {
+        return true;
+    }
+
+    @Override
+    public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
+        ArrayList<Reservation> res = new ArrayList<>();
+        
+        res.add(new Reservation(LocalDateTime.now().plusMinutes(5), 60, new Mail("klein_gautier@yahoo.fr"), immat));
+        return res;
     }
     
 }

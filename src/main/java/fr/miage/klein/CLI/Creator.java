@@ -1,10 +1,13 @@
 package fr.miage.klein.CLI;
 
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
+import fr.miage.klein.BusinessLogic.Reservation;
 
 public class Creator {
     public static Client createClientInteractive() throws ParseException {
@@ -26,11 +29,28 @@ public class Creator {
         return new Client(prenom, nom, adresse, numTel, email, numCb); 
     }
 
+    public static Reservation createReservationIntractive() throws ParseException {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Création interactive d'une réservation :");
+        System.out.print("Mail : ");
+        Mail mail = new Mail(in.nextLine());
+        System.out.print("Quand : ");
+        LocalDateTime time = LocalDateTime.parse(in.nextLine());
+        System.out.print("Durée : ");
+        int duree = Integer.parseInt(in.nextLine());
+        System.out.print("Immatriculation : ");
+        Immatriculation immat = new Immatriculation(in.nextLine());
+
+        in.close();
+        return new Reservation(time, duree, mail, immat);
+    }
+
     public static void helpCreate() {
         System.out.println("Commande create");
         System.out.println("**********");
         System.out.println("* create help : afficher l'aide sur la commande créer");
         System.out.println("* create client : créer un nouveau client en mode interactif");
+        System.out.println("* create reservation : créer une nouvelle reservation en mode interactif");
         System.out.println("**********");
     }
 }

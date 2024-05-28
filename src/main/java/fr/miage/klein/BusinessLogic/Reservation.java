@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Reservation {
     private NumReservation id;
     private LocalDateTime datetime;
-    private int duree;
+    private int duree; //en minute
     private EResEtat etat;
     private Mail mailClient;
     private Immatriculation immat;
@@ -82,6 +82,10 @@ public class Reservation {
 
     public void setIdBorne(int idBorne) {
         this.idBorne = idBorne;
+    }
+
+    public boolean isValidForAccess() {
+        return !(getDatetime().isBefore(LocalDateTime.now()) || LocalDateTime.now().isAfter(getDatetime().plusMinutes(10))); // TODO changer for settings value
     }
 
 }

@@ -19,7 +19,12 @@ public class App {
         while (true) {
             System.out.print("> ");
             Command command = new Command(input.nextLine());
-            interpreter.execute(command);
+            try {
+                interpreter.execute(command);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            
         }
     }
 }

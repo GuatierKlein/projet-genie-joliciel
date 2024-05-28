@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Facture;
+import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation;
 
@@ -23,9 +24,13 @@ public interface IDatabaseController {
     public void addFacture(Facture facture);
 
     //réservations
-    public Client getReservation(NumReservation id);
+    public Reservation getReservation(NumReservation id);
     public List<Reservation> getReservations();
     public void deleteReservation();
     public void updateReservation(Reservation reservation);
     public void addReservation(Reservation reservation);
+
+    //immat 
+    public boolean existsImmat(Immatriculation immat);
+    public List<Reservation> getReservationsFromImmat(Immatriculation immat);
 }

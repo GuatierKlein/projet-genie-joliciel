@@ -5,7 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessImmat;
+import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessRes;
+import fr.miage.klein.Mocks.DBMock;
+
 public class BusinessLogicTests {
+    private DBMock db = new DBMock();
 
     @Test
     @DisplayName("Vérification Value Object immatriculation : invalides")
@@ -152,5 +157,28 @@ public class BusinessLogicTests {
 
         assertFalse(reservation.verifNumReservation(-10));
         assertFalse(reservation.verifNumReservation(100001));
+    }
+
+    @Test
+    @DisplayName("Test acces parking immat")
+    public void testParkingImmat() {
+        try {
+            ParkAccessImmat access = new ParkAccessImmat(new Immatriculation("AA-229-AA"), db);
+            assertTrue(access.validate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    
+    @Test
+    @DisplayName("Test acces parking res")
+    public void testParkingRes() {
+        try {
+            ParkAccessRes access = new ParkAccessRes(new NumReservation(1234), db);
+            assertTrue(access.validate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
