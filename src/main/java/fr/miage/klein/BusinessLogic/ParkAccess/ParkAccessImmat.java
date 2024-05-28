@@ -13,12 +13,7 @@ public class ParkAccessImmat extends ParkAccess {
         super(db);
         this.value = value;
 
-        if(!db.existsImmat(value))
-            throw new Exception("Immatriculation non valide");
 
-        List<Reservation> res = db.getReservationsFromImmat(value);
-        if(!isOneResValid(res))
-            throw new Exception("Aucune reservation valide");
 
     }
 
@@ -29,4 +24,16 @@ public class ParkAccessImmat extends ParkAccess {
         }
         return false;
     }
+
+    @Override
+    public boolean validate() {
+        if(!db.existsImmat(value))
+            return false;
+
+        List<Reservation> res = db.getReservationsFromImmat(value);
+        if(!isOneResValid(res))
+            return false;
+        return true;
+    }
+
 }

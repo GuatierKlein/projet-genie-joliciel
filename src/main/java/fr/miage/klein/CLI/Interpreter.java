@@ -3,6 +3,8 @@ package fr.miage.klein.CLI;
 import java.text.ParseException;
 
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.Immatriculation;
+import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccess;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessImmat;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessRes;
@@ -69,10 +71,16 @@ public class Interpreter {
 
         switch (args[0]) {
             case "immat":
-                access = new ParkAccessImmat(args[1], db);
+                Immatriculation immat = new Immatriculation(args[1]);
+                access = new ParkAccessImmat(immat, db);
+                if(!access.validate())
+                    throw new Exception("Entrée refusée");
                 break;
             case "reservation":
-                access = new ParkAccessRes(args[1], db);
+                NumReservation res = new NumReservation(args[1]);
+                access = new ParkAccessRes(res, db);
+                if(!access.validate())
+                    throw new Exception("Entrée refusée");
                 break;
         
             default:

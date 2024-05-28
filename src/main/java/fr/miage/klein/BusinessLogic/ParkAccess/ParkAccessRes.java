@@ -10,12 +10,16 @@ public class ParkAccessRes extends ParkAccess {
     public ParkAccessRes(NumReservation value, IDatabaseController db) throws Exception {
         super(db);
         this.value = value;
+    }
+
+    @Override
+    public boolean validate() {
         Reservation res = db.getReservation(value);
         if(res == null)
-            throw new Exception("Reservation non valide");
+            return false;
 
         if(res.isValidForAccess()) 
-            throw new Exception("Reservation non valide");
-
+            return false;
+        return true;
     }
 }

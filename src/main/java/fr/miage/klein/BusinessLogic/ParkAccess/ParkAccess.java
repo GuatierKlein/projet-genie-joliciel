@@ -8,5 +8,7 @@ public abstract class ParkAccess {
     public ParkAccess(IDatabaseController db) {
         this.db = db;
     }
+
+    public abstract boolean validate();
 }
 
