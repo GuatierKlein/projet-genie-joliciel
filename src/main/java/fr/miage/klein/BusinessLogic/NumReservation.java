@@ -12,4 +12,13 @@ public class NumReservation {
     public boolean verifNumReservation(int num){
         return num >= 0 && num <= 99999;
     }
+
+    public int getNum() {
+        return this.num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
 }
