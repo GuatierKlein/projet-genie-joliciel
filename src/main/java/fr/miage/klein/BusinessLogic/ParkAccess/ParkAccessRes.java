@@ -18,8 +18,6 @@ public class ParkAccessRes extends ParkAccess {
         if(res == null)
             return false;
 
-        if(res.isValidForAccess()) 
-            return false;
-        return true;
+        return res.isValidForAccess();
     }
 }
