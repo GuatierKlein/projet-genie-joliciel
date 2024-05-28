@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.Reservation;
 
@@ -38,7 +39,7 @@ public class Creator {
         System.out.print("Durée : ");
         int duree = Integer.parseInt(in.nextLine());
         System.out.print("Immatriculation : ");
-        String immat = in.nextLine();
+        Immatriculation immat = new Immatriculation(in.nextLine());
 
         in.close();
         return new Reservation(time, duree, mail, immat);

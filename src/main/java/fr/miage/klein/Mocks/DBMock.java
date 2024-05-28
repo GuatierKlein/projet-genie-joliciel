@@ -4,6 +4,8 @@ import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Facture;
+import fr.miage.klein.BusinessLogic.Immatriculation;
+import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
@@ -70,12 +72,6 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public Reservation getReservation(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
-    }
-
-    @Override
     public List<Reservation> getReservations() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReservations'");
@@ -100,13 +96,19 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public boolean existsImmat(String immat) {
+    public Reservation getReservation(NumReservation id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
+    }
+
+    @Override
+    public boolean existsImmat(Immatriculation immat) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'existsImmat'");
     }
 
     @Override
-    public List<Reservation> getReservationsFromImmat(String immat) {
+    public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReservationsFromImmat'");
     }

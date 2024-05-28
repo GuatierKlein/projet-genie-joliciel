@@ -9,6 +9,13 @@ public class NumReservation {
         this.num = num;
     }
 
+    public NumReservation(String value){
+        int num = Integer.parseInt(value);
+        if(!verifNumReservation(num))
+            throw new IllegalArgumentException();
+        this.num = num;
+    }
+
     public boolean verifNumReservation(int num){
         return num >= 0 && num <= 99999;
     }
