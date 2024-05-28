@@ -33,4 +33,9 @@ public interface IDatabaseController {
     //immat 
     public boolean existsImmat(Immatriculation immat);
     public List<Reservation> getReservationsFromImmat(Immatriculation immat);
+
+    //présence 
+    public void addPresence(Immatriculation immat);
+    public boolean isPresent(Immatriculation immat);
+    public void deletePresence(Immatriculation immat);
 }

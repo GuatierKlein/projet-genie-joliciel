@@ -116,5 +116,20 @@ public class DBMock implements IDatabaseController {
         res.add(new Reservation(LocalDateTime.now().plusMinutes(5), 60, new Mail("klein_gautier@yahoo.fr"), immat));
         return res;
     }
+
+    @Override
+    public void addPresence(Immatriculation immat) {
+
+    }
+
+    @Override
+    public boolean isPresent(Immatriculation immat) {
+        return false;
+    }
+
+    @Override
+    public void deletePresence(Immatriculation immat) {
+        
+    }
     
 }
