@@ -1,10 +1,12 @@
 package fr.miage.klein.BusinessLogic.ParkAccess;
 
-public abstract class ParkAccess {
-    protected String accessValue;
+import fr.miage.klein.Controller.IDatabaseController;
 
-    public String getAccessValue() {
-        return accessValue;
+public abstract class ParkAccess {
+    protected IDatabaseController db;
+
+    public ParkAccess(IDatabaseController db) {
+        this.db = db;
     }
 }
 
