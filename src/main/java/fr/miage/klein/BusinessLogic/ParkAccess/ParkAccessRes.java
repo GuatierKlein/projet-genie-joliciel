@@ -1,7 +1,5 @@
 package fr.miage.klein.BusinessLogic.ParkAccess;
 
-import java.time.LocalDateTime;
-
 import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
@@ -12,8 +10,7 @@ public class ParkAccessRes extends ParkAccess {
         if(res == null)
             throw new Exception("Reservation non valide");
 
-        //settings période attente
-        if(res.getDatetime().isBefore(LocalDateTime.now()) || LocalDateTime.now().isAfter(res.getDatetime().plusMinutes(10)))
+        if(res.isValidForAccess()) 
             throw new Exception("Reservation non valide");
 
     }
