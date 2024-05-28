@@ -86,7 +86,7 @@ public class Reservation {
     }
 
     public boolean isValidForAccess() {
-        return getDatetime().isBefore(LocalDateTime.now()) || LocalDateTime.now().isAfter(getDatetime().plusMinutes(10));
+        return getDatetime().isBefore(LocalDateTime.now()) || LocalDateTime.now().isAfter(getDatetime().plusMinutes(10)); // TODO changer for settings value
     }
 
 }
