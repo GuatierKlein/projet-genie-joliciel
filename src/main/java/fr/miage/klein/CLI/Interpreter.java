@@ -42,6 +42,7 @@ public class Interpreter {
         System.out.println("Commandes disponibles");
         System.out.println("**********");
         System.out.println("* create <type> : tapez create help pour plus d'info");
+        System.out.println("* connect <type> : tapez connect help pour plus d'info");
         System.out.println("**********");
     }
 
@@ -63,30 +64,43 @@ public class Interpreter {
         }
     }
 
-    private void access(String[] args) throws Exception {
-        if(args.length < 2 || args.length > 2)
-            throw new IllegalArgumentException("Arguments invalides");
+    private void accessHelp() {
+        System.out.println("Commande access");
+        System.out.println("Permet d'entrer dans le parking");
+        System.out.println("**********");
+        System.out.println("* access help : afficher l'aide sur la commande access");
+        System.out.println("* access immat <num> : rentrer en utilisant un numéro d'immatriculation");
+        System.out.println("* access res <num> : rentrer en utilisant un numéro de réservation");
+        System.out.println("**********");
+    }
 
+    private void access(String[] args) throws Exception {
         ParkAccess access;
 
         switch (args[0]) {
             case "immat":
+                if(args.length < 2 || args.length > 2)
+                    throw new IllegalArgumentException("Arguments invalides");
                 Immatriculation immat = new Immatriculation(args[1]);
                 access = new ParkAccessImmat(immat, db);
                 if(!access.validate())
                     throw new Exception("Entrée refusée");
+                System.out.println("Acces autorisé");
                 break;
-            case "reservation":
+            case "res":
+                if(args.length < 2 || args.length > 2)
+                    throw new IllegalArgumentException("Arguments invalides");
                 NumReservation res = new NumReservation(args[1]);
                 access = new ParkAccessRes(res, db);
                 if(!access.validate())
                     throw new Exception("Entrée refusée");
+                System.out.println("Acces autorisé");
+                break;
+            case "help": accessHelp();
                 break;
         
             default:
             throw new IllegalArgumentException("Arguments invalides");
         }
-        
-        System.out.println("Cher client, bienvenue!");
     }
 }
