@@ -1,6 +1,8 @@
 package fr.miage.klein.BusinessLogic;
 
-public class Borne {
+import java.io.Serializable;
+
+public class Borne implements Serializable {
     private int id;
     private EBorneEtat etat;
 

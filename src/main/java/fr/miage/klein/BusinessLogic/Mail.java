@@ -1,8 +1,9 @@
 package fr.miage.klein.BusinessLogic;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
-public class Mail {
+public class Mail implements Serializable {
 
     String mail;
     

@@ -1,6 +1,8 @@
 package fr.miage.klein.BusinessLogic;
 
-public class Frais {
+import java.io.Serializable;
+
+public class Frais implements Serializable {
     private Float montant; 
     private String devise;
 

@@ -1,6 +1,8 @@
 package fr.miage.klein.BusinessLogic;
 
-public class Client {
+import java.io.Serializable;
+
+public class Client implements Serializable {
     private String prenom;
     private String nom;
     private String adresse;
