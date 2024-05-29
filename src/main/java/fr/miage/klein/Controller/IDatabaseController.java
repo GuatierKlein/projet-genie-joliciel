@@ -14,14 +14,14 @@ public interface IDatabaseController {
     public Client getClient(int id);
     public Client getClient(Mail mail);
     public List<Client> getClients();
-    public void deleteClient();
+    public void deleteClient(int id);
     public void updateClient(Client client);
     public void addClient(Client client);
 
     //Factures
     public Client getFacture(int id);
     public List<Facture> getFactures();
-    public void deleteFacture();
+    public void deleteFacture(int id);
     public void updateFacture(Facture facture);
     public void addFacture(Facture facture);
 

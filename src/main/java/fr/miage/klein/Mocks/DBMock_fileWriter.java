@@ -1,11 +1,18 @@
 package fr.miage.klein.Mocks;
 
-import java.time.LocalDateTime;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.miage.klein.BusinessLogic.Borne;
 import fr.miage.klein.BusinessLogic.Client;
-import fr.miage.klein.BusinessLogic.EResEtat;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
@@ -13,7 +20,64 @@ import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
-public class DBMock implements IDatabaseController {
+public class DBMock_fileWriter implements IDatabaseController, Serializable {
+
+    List<Client> clientList = new ArrayList<>();
+    List<Reservation> reservationList = new ArrayList<>();
+    List<Borne> borneList = new ArrayList<>();
+
+    public DBMock_fileWriter() throws FileNotFoundException {
+        File f = new File("database.ser");
+        if(f.exists())
+            read();
+    }
+
+    public void write() {
+        ObjectOutputStream oos = null;
+        FileOutputStream fichierOut;
+        try {
+            fichierOut = new FileOutputStream("database.ser");
+            oos = new ObjectOutputStream(fichierOut);
+            oos.writeObject(this);
+            oos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.flush();
+                    oos.close();
+                }
+            } catch (final IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        System.out.println("Fichier écrit");
+    }
+
+    public void read() {
+        ObjectInputStream ois = null;
+        FileInputStream fichierIn;
+
+        try {
+            fichierIn = new FileInputStream("database.ser");
+            ois = new ObjectInputStream(fichierIn);
+            final DBMock_fileWriter data = (DBMock_fileWriter) ois.readObject();
+            clientList = data.clientList;
+        } catch (final java.io.IOException e) {
+            e.printStackTrace();
+        } catch (final ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (final IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public Client getClient(int id) {
@@ -22,9 +86,17 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
+    public Client getClient(Mail mail) {
+        for (Client client : clientList) {
+            if(client.getEmail().equals(mail))
+                return client;
+        }
+        return null;
+    }
+
+    @Override
     public List<Client> getClients() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getClients'");
+        return clientList;
     }
 
     @Override
@@ -41,8 +113,8 @@ public class DBMock implements IDatabaseController {
 
     @Override
     public void addClient(Client client) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addClient'");
+        clientList.add(client);
+        write();
     }
 
     @Override
@@ -76,6 +148,12 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
+    public Reservation getReservation(NumReservation id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
+    }
+
+    @Override
     public List<Reservation> getReservations() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReservations'");
@@ -100,41 +178,33 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public Reservation getReservation(NumReservation id) {
-        return new Reservation(id, LocalDateTime.now().plusMinutes(5), 60, EResEtat.EnAttente, new Mail("klein_gautier@yahoo.fr"), new Immatriculation("AA-229-AA"), 3);
-    }
-
-    @Override
     public boolean existsImmat(Immatriculation immat) {
-        return true;
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'existsImmat'");
     }
 
     @Override
     public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
-        ArrayList<Reservation> res = new ArrayList<>();
-        
-        res.add(new Reservation(LocalDateTime.now().plusMinutes(5), 60, new Mail("klein_gautier@yahoo.fr"), immat));
-        return res;
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservationsFromImmat'");
     }
 
     @Override
     public void addPresence(Immatriculation immat) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addPresence'");
     }
 
     @Override
     public boolean isPresent(Immatriculation immat) {
-        return false;
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isPresent'");
     }
 
     @Override
     public void deletePresence(Immatriculation immat) {
-        
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deletePresence'");
     }
 
-    @Override
-    public Client getClient(Mail mail) {
-        return new Client("Théodore", "Muller", "26 rue des Théodore", "0645316575", mail, 123456);
-    }
-    
 }
