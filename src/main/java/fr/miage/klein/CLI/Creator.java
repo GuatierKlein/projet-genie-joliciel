@@ -7,7 +7,8 @@ import java.util.Scanner;
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
-import fr.miage.klein.BusinessLogic.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 
 public class Creator {
     public static Client createClientInteractive() throws ParseException {
@@ -42,7 +43,7 @@ public class Creator {
         Immatriculation immat = new Immatriculation(in.nextLine());
 
         in.close();
-        return new Reservation(time, duree, mail, immat);
+        return new ReservationTemporaire(time, duree, mail, immat);
     }
 
     public static void helpCreate() {
