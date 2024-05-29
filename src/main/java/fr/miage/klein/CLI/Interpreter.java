@@ -63,7 +63,10 @@ public class Interpreter {
                 Client newClient = Creator.createClientInteractive();
                 db.addClient(newClient);
                 break;
-        
+            case "reservation":
+                Reservation reservation = Creator.createReservationIntractive();
+                db.addReservation(reservation);
+                break;
             default:
             throw new IllegalArgumentException("Arguments invalides");
         }
