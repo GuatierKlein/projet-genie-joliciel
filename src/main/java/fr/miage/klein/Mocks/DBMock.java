@@ -131,5 +131,10 @@ public class DBMock implements IDatabaseController {
     public void deletePresence(Immatriculation immat) {
         
     }
+
+    @Override
+    public Client getClient(Mail mail) {
+        return new Client("Théodore", "Muller", "26 rue des Théodore", "0645316575", mail, 123456);
+    }
     
 }

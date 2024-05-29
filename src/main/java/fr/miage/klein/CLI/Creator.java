@@ -8,6 +8,7 @@ import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.Reservation;
+import fr.miage.klein.Controller.IDatabaseController;
 
 public class Creator {
     public static Client createClientInteractive() throws ParseException {
@@ -29,7 +30,7 @@ public class Creator {
         return new Client(prenom, nom, adresse, numTel, email, numCb); 
     }
 
-    public static Reservation createReservationIntractive() throws ParseException {
+    public static Reservation createReservationIntractive(IDatabaseController db) throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.println("Création interactive d'une réservation :");
         System.out.print("Mail : ");
@@ -42,6 +43,9 @@ public class Creator {
         Immatriculation immat = new Immatriculation(in.nextLine());
 
         in.close();
+        Client client = db.getClient(mail);
+        if(client == null)
+            throw new Exception("EMail associé à aucun compte");
         return new Reservation(time, duree, mail, immat);
     }
 

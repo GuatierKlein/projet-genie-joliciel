@@ -5,12 +5,14 @@ import java.util.List;
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
+import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation;
 
 public interface IDatabaseController {
     //clients
     public Client getClient(int id);
+    public Client getClient(Mail mail);
     public List<Client> getClients();
     public void deleteClient();
     public void updateClient(Client client);
