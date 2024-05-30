@@ -16,7 +16,7 @@ public class PlageHoraire {
 
     private boolean verifPlageHoraire(LocalTime debut, LocalTime fin) {
         Duration duration = Duration.between(debut, fin);
-        return duration.toMinutes() > 30 && duration.toHours() < 24;
+        return duration.toMinutes() >= 30 && duration.toHours() < 24;
     }
 
     public LocalTime getDebut() {

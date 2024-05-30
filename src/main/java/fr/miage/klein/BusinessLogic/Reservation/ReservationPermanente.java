@@ -1,5 +1,6 @@
 package fr.miage.klein.BusinessLogic.Reservation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import fr.miage.klein.BusinessLogic.EResEtat;
@@ -7,23 +8,26 @@ import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
 
-public class ReservationPermatente extends Reservation{
+public class ReservationPermanente extends Reservation{
     private List<JourPlage> jourPlage;
     private EMois mois;
     private int nbMois;
+    private int annee;
 
-    public ReservationPermatente(NumReservation id, EResEtat etat, Mail mailClient, Immatriculation immat, int idBorne, List<JourPlage> jourPlage, EMois mois, int nbMois){
+    public ReservationPermanente(NumReservation id, EResEtat etat, Mail mailClient, Immatriculation immat, int idBorne, List<JourPlage> jourPlage, EMois mois, int nbMois, int annee){
         super(id, etat, mailClient, immat, idBorne);
         this.jourPlage = jourPlage;
         this.mois = mois;
         this.nbMois = nbMois;
+        this.annee = annee;
     }
 
-    public ReservationPermatente(List<JourPlage> jourPlage, Mail mailClient, Immatriculation immat, EMois mois, int nbMois){
+    public ReservationPermanente(List<JourPlage> jourPlage, Mail mailClient, Immatriculation immat, EMois mois, int nbMois, int annee){
         super(mailClient, immat);
         this.jourPlage = jourPlage;
         this.mois = mois;
         this.nbMois = nbMois;
+        this.annee = annee;
     }
 
     public boolean verifReservationPermanente() {
@@ -34,7 +38,20 @@ public class ReservationPermatente extends Reservation{
     @Override
     public boolean isValidForAccess() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isValidForAccess'");
+
+        return verifJour() && verifMoisAnnee();
+    }
+
+    public boolean verifMoisAnnee(){
+        return LocalDate.now().isBefore(LocalDate.of(this.annee, this.mois.getMonth().getValue(), 1).plusMonths(nbMois));
+    }
+
+    public boolean verifJour(){
+        for (JourPlage jourPlage : this.jourPlage) {
+            if(LocalDate.now().getDayOfWeek() == jourPlage.getJour().getDay())
+                return true;
+        }
+        return false;
     }
 
     public List<JourPlage> getJourPlage() {
@@ -59,6 +76,14 @@ public class ReservationPermatente extends Reservation{
 
     public void setNbMois(int nbMois) {
         this.nbMois = nbMois;
+    }
+
+    public int getAnnee() {
+        return this.annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
     }
 
 
