@@ -8,6 +8,8 @@ import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
 
+import fr.miage.klein.Mocks.DBMock;
+
 public class ReservationPermanente extends Reservation{
     private List<JourPlage> jourPlage;
     private EMois mois;
@@ -31,14 +33,79 @@ public class ReservationPermanente extends Reservation{
     }
 
     public boolean verifReservationPermanente() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'verifReservationPermanente'");
+        DBMock db = new DBMock();
+        List<ReservationPermanente> res = db.getReservationsPermanentesFromClient(this.getMailClient());
+        for (ReservationPermanente reservationPermanente : res) {
+            if(verifProblemePlagePerm(reservationPermanente))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean verifContiguePerm(ReservationPermanente res){
+        for (JourPlage jourPlageRes : res.getJourPlage()) {
+            for (JourPlage jourPlageCurrent : jourPlage){
+                if(verifJour(jourPlageRes) 
+                && jourPlageCurrent.getPlageHoraire().getDebut().equals(
+                    jourPlageRes.getPlageHoraire().getFin()
+                )
+                || 
+                verifJour(jourPlageRes) 
+                && jourPlageCurrent.getPlageHoraire().getFin().equals(
+                    jourPlageRes.getPlageHoraire().getDebut()
+                )){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean verifContigueListePerm(){
+        DBMock db = new DBMock();
+        List<ReservationPermanente> res = db.getReservationsPermanentesFromClient(this.getMailClient());
+        for (ReservationPermanente reservationPermanente : res) {
+            if(verifContiguePerm(reservationPermanente))
+                return true;
+        }
+        return false;
+    }
+
+    public boolean verifProblemePlagePerm(ReservationPermanente res){
+        for (JourPlage jourPlageRes : res.getJourPlage()) {
+            for (JourPlage jourPlageCurrent : jourPlage){
+                if((verifJour(jourPlageRes) 
+                && jourPlageCurrent.getPlageHoraire().getDebut().isAfter(
+                    jourPlageRes.getPlageHoraire().getDebut()
+                ) 
+                && jourPlageCurrent.getPlageHoraire().getDebut().isBefore(
+                    jourPlageRes.getPlageHoraire().getFin()
+                )
+                || verifJour(jourPlageRes) 
+                && jourPlageCurrent.getPlageHoraire().getFin().isAfter(
+                    jourPlageRes.getPlageHoraire().getDebut()
+                ) 
+                && jourPlageCurrent.getPlageHoraire().getFin().isBefore(
+                    jourPlageRes.getPlageHoraire().getFin()
+                ))
+                && !verifContiguePerm(res)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean verifJour(JourPlage jp){
+        for (JourPlage jourPlage : this.jourPlage) {
+            if(jp.getJour().getDay().equals(jourPlage.getJour().getDay()))
+                return true;
+        }
+        return false;
     }
 
     @Override
     public boolean isValidForAccess() {
-        // TODO Auto-generated method stub
-
         return verifJour() && verifMoisAnnee();
     }
 
@@ -48,7 +115,7 @@ public class ReservationPermanente extends Reservation{
 
     public boolean verifJour(){
         for (JourPlage jourPlage : this.jourPlage) {
-            if(LocalDate.now().getDayOfWeek() == jourPlage.getJour().getDay())
+            if(LocalDate.now().getDayOfWeek().equals(jourPlage.getJour().getDay()))
                 return true;
         }
         return false;

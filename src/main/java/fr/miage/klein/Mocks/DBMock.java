@@ -11,6 +11,7 @@ import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
 import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 import fr.miage.klein.Controller.IDatabaseController;
 
@@ -131,6 +132,12 @@ public class DBMock implements IDatabaseController {
     @Override
     public void deletePresence(Immatriculation immat) {
         
+    }
+
+    @Override
+    public List<ReservationPermanente> getReservationsPermanentesFromClient(Mail mailClient) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservationsPermanentesFromClient'");
     }
     
 }
