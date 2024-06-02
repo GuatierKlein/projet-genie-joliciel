@@ -1,8 +1,12 @@
 package fr.miage.klein.BusinessLogic;
 
+import java.time.Duration;
+
 public class Borne {
+
     private int id;
     private EBorneEtat etat;
+    public static Duration dureeAttente = Duration.ofMinutes(10);
 
     public Borne(int id, EBorneEtat etat) {
         this.id = id;
@@ -23,6 +27,14 @@ public class Borne {
 
     public void setEtat(EBorneEtat etat) {
         this.etat = etat;
+    }
+
+    public static Duration getDureeAttente() {
+        return dureeAttente;
+    }
+
+    public static void setDureeAttente(Duration dureeAttente) {
+        Borne.dureeAttente = dureeAttente;
     }
 
     // public Boolean seConnecter(){

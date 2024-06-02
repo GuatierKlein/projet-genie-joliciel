@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.miage.klein.BusinessLogic.Borne;
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.EBorneEtat;
 import fr.miage.klein.BusinessLogic.EResEtat;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
@@ -97,6 +99,18 @@ public class DBMock implements IDatabaseController {
     public void addReservation(Reservation reservation) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'addReservation'");
+    }
+
+    @Override
+    public void updateBorneEtat(EBorneEtat etat) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateBorneEtat'");
+    }
+
+    @Override
+    public Borne getBorne(int id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getBorne'");
     }
 
     @Override

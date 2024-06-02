@@ -2,7 +2,9 @@ package fr.miage.klein.Controller;
 
 import java.util.List;
 
+import fr.miage.klein.BusinessLogic.Borne;
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.EBorneEtat;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
@@ -40,4 +42,8 @@ public interface IDatabaseController {
     public void addPresence(Immatriculation immat);
     public boolean isPresent(Immatriculation immat);
     public void deletePresence(Immatriculation immat);
+
+    //borne
+    public void updateBorneEtat(EBorneEtat etat);
+    public Borne getBorne(int id);
 }

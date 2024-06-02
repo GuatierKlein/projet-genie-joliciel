@@ -1,12 +1,15 @@
 package fr.miage.klein.CLI;
 
+import java.text.ParseException;
+
+import fr.miage.klein.BusinessLogic.Borne;
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.NumReservation;
-import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccess;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessImmat;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessRes;
+import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class Interpreter {
@@ -21,6 +24,9 @@ public class Interpreter {
             case "": break;
             case "create":
                 create(command.getArgs());
+                break;
+            case "update":
+                update(command.getArgs());
                 break;
             case "access":
                 access(command.getArgs());
@@ -44,6 +50,7 @@ public class Interpreter {
         System.out.println("Commandes disponibles");
         System.out.println("**********");
         System.out.println("* create <type> : tapez create help pour plus d'info");
+        System.out.println("* update <type> : tapez update help pour plus d'info");
         System.out.println("* access <type> <num> : tapez access help pour plus d'info");
         System.out.println("* leave <type> <num> : tapez leave help pour plus d'info");
         System.out.println("**********");
@@ -145,6 +152,48 @@ public class Interpreter {
         System.out.println("* leave immat <num> : sortir en utilisant un numéro d'immatriculation");
         System.out.println("* leave res <num> : sortir en utilisant un numéro de réservation");
         System.out.println("**********");
+    }
+
+    private void update(String[] args) {
+        if(args.length == 0)
+            throw new IllegalArgumentException("Arguments invalides");
+
+        try {
+            switch (args[0]) {
+                case "help":
+                    Updator.helpUpdate();
+                    break;
+                case "etat-borne":
+                    Borne borneUpdated = Updator.updateEtatBorne();
+                    db.updateBorneEtat(borneUpdated.getEtat());
+                    break;
+                case "param-prix-res-h":
+                    Updator.updateReservationFeePerHour();
+                    break;
+                case "param-prix-res-suppl":
+                    Updator.updateReservationSupplement();
+                    break;
+                case "param-prix-charge-h":
+                    Updator.updateChargeFeePerHour();
+                    break;
+                case "param-prix-pen":
+                    Updator.updatePenaltyFeesParameters();
+                    break;
+                case "param-default-currency":
+                    Updator.updateDefaultCurrency();
+                    break;
+                case "param-res-extension-duration":
+                    Updator.updateReservationExtensionDuration();
+                    break;
+                case "param-waiting-delay":
+                    Updator.updateReservationExtensionDuration();
+                    break;
+                default:
+                throw new IllegalArgumentException("Arguments invalides");
+            }
+        } catch(ParseException e){
+            System.out.println("Saisie invalide");
+        }
     }
 }
 

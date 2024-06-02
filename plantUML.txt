@@ -23,6 +23,7 @@ enum EBorneEtat {
 class Borne {
     int id
     EBorneEtat etat 
+    Duration delaiAttente
 }
 
 class Transaction {
