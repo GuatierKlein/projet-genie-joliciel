@@ -34,6 +34,9 @@ public class Interpreter {
             case "exit":
                 System.exit(0);
                 break;
+            case "get":
+                get(command.getArgs());
+                break;
         
             default:
                 throw new IllegalArgumentException("Commande inexistante");
@@ -146,6 +149,24 @@ public class Interpreter {
         System.out.println("* leave immat <num> : sortir en utilisant un numéro d'immatriculation");
         System.out.println("* leave res <num> : sortir en utilisant un numéro de réservation");
         System.out.println("**********");
+    }
+
+    private void get(String [] args) throws Exception {
+        switch (args[0]) {
+            case "clients": Getter.getClients(db);               
+                break;
+            case "reservations": Getter.getReservations(db);            
+                break;
+            case "factures": Getter.getFactures(db);               
+                break;
+            case "presences": Getter.getPresence(db);               
+                break;
+            case "help": Getter.helpGet();;               
+                break;
+        
+            default:
+            throw new IllegalArgumentException("Arguments invalides");
+        }
     }
 }
 
