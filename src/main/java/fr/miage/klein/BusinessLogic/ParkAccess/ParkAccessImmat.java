@@ -3,7 +3,7 @@ package fr.miage.klein.BusinessLogic.ParkAccess;
 import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Immatriculation;
-import fr.miage.klein.BusinessLogic.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class ParkAccessImmat extends ParkAccess {

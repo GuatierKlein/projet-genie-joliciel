@@ -12,7 +12,9 @@ import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
-import fr.miage.klein.BusinessLogic.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class DBMock implements IDatabaseController {
@@ -115,7 +117,7 @@ public class DBMock implements IDatabaseController {
 
     @Override
     public Reservation getReservation(NumReservation id) {
-        return new Reservation(id, LocalDateTime.now().plusMinutes(5), 60, EResEtat.EnAttente, new Mail("klein_gautier@yahoo.fr"), new Immatriculation("AA-229-AA"), 3);
+        return new ReservationTemporaire(id, LocalDateTime.now().plusMinutes(5), 60, EResEtat.EnAttente, new Mail("klein_gautier@yahoo.fr"), new Immatriculation("AA-229-AA"), 3);
     }
 
     @Override
@@ -127,7 +129,7 @@ public class DBMock implements IDatabaseController {
     public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
         ArrayList<Reservation> res = new ArrayList<>();
         
-        res.add(new Reservation(LocalDateTime.now().plusMinutes(5), 60, new Mail("klein_gautier@yahoo.fr"), immat));
+        res.add(new ReservationTemporaire(LocalDateTime.now().plusMinutes(5), 60, new Mail("klein_gautier@yahoo.fr"), immat));
         return res;
     }
 
@@ -144,6 +146,18 @@ public class DBMock implements IDatabaseController {
     @Override
     public void deletePresence(Immatriculation immat) {
         
+    }
+
+    @Override
+    public List<ReservationPermanente> getReservationsPermanentesFromClient(Mail mailClient) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservationsPermanentesFromClient'");
+    }
+
+    @Override
+    public void addReservationPermanente(ReservationPermanente reservation) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addReservation'");
     }
 
     @Override

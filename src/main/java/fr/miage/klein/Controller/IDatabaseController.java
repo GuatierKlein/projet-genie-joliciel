@@ -9,7 +9,8 @@ import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
-import fr.miage.klein.BusinessLogic.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
 
 public interface IDatabaseController {
     //clients
@@ -33,6 +34,10 @@ public interface IDatabaseController {
     public void deleteReservation();
     public void updateReservation(Reservation reservation);
     public void addReservation(Reservation reservation);
+    public void addReservationPermanente(ReservationPermanente reservation);
+
+    //résevrations permanentes
+    public List<ReservationPermanente> getReservationsPermanentesFromClient(Mail mailClient);
 
     //immat 
     public boolean existsImmat(Immatriculation immat);
