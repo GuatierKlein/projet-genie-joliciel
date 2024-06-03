@@ -45,6 +45,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
             oos.writeObject(this);
             oos.flush();
         } catch (IOException e) {
+            System.out.println("Erreur lors de l'écriture");
             e.printStackTrace();
         } finally {
             try {
@@ -53,6 +54,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
                     oos.close();
                 }
             } catch (final IOException ex) {
+                System.out.println("Erreur lors de la fermeture du fichier");
                 ex.printStackTrace();
             }
         }
@@ -81,6 +83,8 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
                 ex.printStackTrace();
             }
         }
+
+        System.out.println("DB lue");
     }
 
     @Override
