@@ -11,15 +11,14 @@ import fr.miage.klein.BusinessLogic.Reservation;
 
 public interface IDatabaseController {
     //clients
-    public Client getClient(int id);
     public Client getClient(Mail mail);
     public List<Client> getClients();
-    public void deleteClient(int id);
+    public void deleteClient(Mail mail);
     public void updateClient(Client client);
     public void addClient(Client client);
 
     //Factures
-    public Client getFacture(int id);
+    public Facture getFacture(int id);
     public List<Facture> getFactures();
     public void deleteFacture(int id);
     public void updateFacture(Facture facture);
@@ -28,7 +27,7 @@ public interface IDatabaseController {
     //réservations
     public Reservation getReservation(NumReservation id);
     public List<Reservation> getReservations();
-    public void deleteReservation();
+    public void deleteReservation(NumReservation id);
     public void updateReservation(Reservation reservation);
     public void addReservation(Reservation reservation);
 

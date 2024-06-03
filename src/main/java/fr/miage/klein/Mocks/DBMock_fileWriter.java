@@ -9,7 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import fr.miage.klein.BusinessLogic.Borne;
 import fr.miage.klein.BusinessLogic.Client;
@@ -25,6 +27,8 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     List<Client> clientList = new ArrayList<>();
     List<Reservation> reservationList = new ArrayList<>();
     List<Borne> borneList = new ArrayList<>();
+    List<Immatriculation> presenceList = new ArrayList<>();
+    List<Facture> factureList = new ArrayList<>();
 
     public DBMock_fileWriter() throws FileNotFoundException {
         File f = new File("database.ser");
@@ -80,12 +84,6 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     }
 
     @Override
-    public Client getClient(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getClient'");
-    }
-
-    @Override
     public Client getClient(Mail mail) {
         for (Client client : clientList) {
             if(client.getEmail().equals(mail))
@@ -100,15 +98,16 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     }
 
     @Override
-    public void deleteClient(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteClient'");
+    public void deleteClient(Mail mail) {
+        clientList.removeIf(x -> x.getEmail().equals(mail));
+        write();
     }
 
     @Override
     public void updateClient(Client client) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateClient'");
+        clientList.removeIf(x -> x.getEmail().equals(client.getEmail()));
+        clientList.add(client);
+        write();
     }
 
     @Override
@@ -118,15 +117,14 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     }
 
     @Override
-    public Client getFacture(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFacture'");
+    public Facture getFacture(int id) {
+        // return factureList.stream().filter(x -> x.)
+        return null;
     }
 
     @Override
     public List<Facture> getFactures() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFactures'");
+        return factureList;
     }
 
     @Override
@@ -143,68 +141,67 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
 
     @Override
     public void addFacture(Facture facture) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addFacture'");
+        factureList.add(facture);
+        write();
     }
 
     @Override
     public Reservation getReservation(NumReservation id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
+        Optional<Reservation> res = reservationList.stream().filter(x -> x.getId() == id).findAny();
+        return res.get();
     }
 
     @Override
     public List<Reservation> getReservations() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservations'");
+        return reservationList;
     }
 
     @Override
-    public void deleteReservation() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteReservation'");
+    public void deleteReservation(NumReservation id) {
+        reservationList.removeIf(x -> x.getId().equals(id));
+        write();
     }
 
     @Override
     public void updateReservation(Reservation reservation) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateReservation'");
+        reservationList.removeIf(x -> x.getId().equals(reservation.getId()));
+        reservationList.add(reservation);
+        write();
     }
 
     @Override
     public void addReservation(Reservation reservation) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addReservation'");
+        reservationList.add(reservation);
+        write();
     }
 
     @Override
     public boolean existsImmat(Immatriculation immat) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'existsImmat'");
+        return true;
     }
 
     @Override
     public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservationsFromImmat'");
+        List<Reservation> res = new LinkedList<>();
+        res.addAll(reservationList.stream().filter(x -> x.getImmat().equals(immat)).toList());
+        return res;
     }
 
     @Override
     public void addPresence(Immatriculation immat) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addPresence'");
+        presenceList.add(immat);
+        write();
     }
 
     @Override
     public boolean isPresent(Immatriculation immat) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isPresent'");
+        return presenceList.contains(immat);
     }
 
     @Override
     public void deletePresence(Immatriculation immat) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletePresence'");
+        presenceList.remove(immat);
+        write();
     }
 
 }
