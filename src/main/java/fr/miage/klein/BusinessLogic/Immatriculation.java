@@ -1,8 +1,9 @@
 package fr.miage.klein.BusinessLogic;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
-public class Immatriculation {
+public class Immatriculation implements Serializable {
     private String immat;
     
     public Immatriculation(String immat){

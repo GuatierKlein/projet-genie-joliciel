@@ -16,13 +16,6 @@ import fr.miage.klein.BusinessLogic.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class DBMock implements IDatabaseController {
-
-    @Override
-    public Client getClient(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getClient'");
-    }
-
     @Override
     public List<Client> getClients() {
         // TODO Auto-generated method stub
@@ -30,7 +23,7 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public void deleteClient() {
+    public void deleteClient(Mail mail) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteClient'");
     }
@@ -48,7 +41,7 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public Client getFacture(int id) {
+    public Facture getFacture(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getFacture'");
     }
@@ -60,7 +53,7 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public void deleteFacture() {
+    public void deleteFacture(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteFacture'");
     }
@@ -84,7 +77,7 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public void deleteReservation() {
+    public void deleteReservation(NumReservation id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteReservation'");
     }
@@ -149,6 +142,12 @@ public class DBMock implements IDatabaseController {
     @Override
     public Client getClient(Mail mail) {
         return new Client("Théodore", "Muller", "26 rue des Théodore", "0645316575", mail, 123456);
+    }
+
+    @Override
+    public List<Immatriculation> getPresence() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPresence'");
     }
     
 }

@@ -40,6 +40,9 @@ public class Interpreter {
             case "exit":
                 System.exit(0);
                 break;
+            case "get":
+                get(command.getArgs());
+                break;
         
             default:
                 throw new IllegalArgumentException("Commande inexistante");
@@ -53,6 +56,7 @@ public class Interpreter {
         System.out.println("* update <type> : tapez update help pour plus d'info");
         System.out.println("* access <type> <num> : tapez access help pour plus d'info");
         System.out.println("* leave <type> <num> : tapez leave help pour plus d'info");
+        System.out.println("* get <type> : tapez get help pour plus d'info");
         System.out.println("**********");
     }
 
@@ -193,6 +197,24 @@ public class Interpreter {
             }
         } catch(ParseException e){
             System.out.println("Saisie invalide");
+        }
+    }
+    
+    private void get(String [] args) throws Exception {
+        switch (args[0]) {
+            case "clients": Getter.getClients(db);               
+                break;
+            case "reservations": Getter.getReservations(db);            
+                break;
+            case "factures": Getter.getFactures(db);               
+                break;
+            case "presences": Getter.getPresence(db);               
+                break;
+            case "help": Getter.helpGet();;               
+                break;
+        
+            default:
+            throw new IllegalArgumentException("Arguments invalides");
         }
     }
 }

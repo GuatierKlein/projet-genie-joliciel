@@ -1,8 +1,9 @@
 package fr.miage.klein.BusinessLogic;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Reservation {
+public class Reservation implements Serializable {
     private NumReservation id;
     private LocalDateTime datetime;
     private int duree; //en minute

@@ -1,6 +1,8 @@
 package fr.miage.klein.BusinessLogic;
 
-public class NumReservation {
+import java.io.Serializable;
+
+public class NumReservation implements Serializable {
     private int num;
 
     public NumReservation(int num){

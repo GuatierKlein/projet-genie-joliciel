@@ -1,9 +1,9 @@
 package fr.miage.klein.BusinessLogic;
 
+import java.io.Serializable;
 import java.time.Duration;
 
-public class Borne {
-
+public class Borne implements Serializable {
     private int id;
     private EBorneEtat etat;
     public static Duration dureeAttente = Duration.ofMinutes(10);

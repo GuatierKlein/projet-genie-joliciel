@@ -1,9 +1,11 @@
 package fr.miage.klein.BusinessLogic;
 
+import java.io.Serializable;
+import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class Facture {
+public class Facture implements Serializable {
     
     private static String DEVISE_PAR_DEFAUT = "EUR";
     private static float TARIF_HORAIRE_RES = 10;
