@@ -9,7 +9,8 @@ import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccess;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessImmat;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessRes;
-import fr.miage.klein.BusinessLogic.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class Interpreter {
@@ -72,6 +73,9 @@ public class Interpreter {
                 Client newClient = Creator.createClientInteractive();
                 db.addClient(newClient);
                 break;
+            case "reservationPermanente":
+                ReservationPermanente res = Creator.createReservationPermanenteIntractive();
+                db.addReservationPermanente(res);
             case "reservation":
                 Reservation reservation = Creator.createReservationIntractive(db);
                 db.addReservation(reservation);

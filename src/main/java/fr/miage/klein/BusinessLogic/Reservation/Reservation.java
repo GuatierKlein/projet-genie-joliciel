@@ -1,30 +1,28 @@
-package fr.miage.klein.BusinessLogic;
+package fr.miage.klein.BusinessLogic.Reservation;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
-public class Reservation implements Serializable {
+import fr.miage.klein.BusinessLogic.EResEtat;
+import fr.miage.klein.BusinessLogic.Immatriculation;
+import fr.miage.klein.BusinessLogic.Mail;
+import fr.miage.klein.BusinessLogic.NumReservation;
+
+public abstract class Reservation implements Serializable{
     private NumReservation id;
-    private LocalDateTime datetime;
-    private int duree; //en minute
     private EResEtat etat;
     private Mail mailClient;
     private Immatriculation immat;
     private int idBorne;
 
-    public Reservation(NumReservation id, LocalDateTime datetime, int duree, EResEtat etat, Mail mailClient, Immatriculation immat, int idBorne) {
+    public Reservation(NumReservation id, EResEtat etat, Mail mailClient, Immatriculation immat, int idBorne){
         this.id = id;
-        this.datetime = datetime;
-        this.duree = duree;
         this.etat = etat;
         this.mailClient = mailClient;
         this.immat = immat;
         this.idBorne = idBorne;
     }
 
-    public Reservation(LocalDateTime datetime, int duree, Mail mailClient, Immatriculation immat) {
-        this.datetime = datetime;
-        this.duree = duree;
+    public Reservation(Mail mailClient, Immatriculation immat){
         this.mailClient = mailClient;
         this.immat = immat;
     }
@@ -35,22 +33,6 @@ public class Reservation implements Serializable {
 
     public void setId(NumReservation id) {
         this.id = id;
-    }
-
-    public LocalDateTime getDatetime() {
-        return this.datetime;
-    }
-
-    public void setDatetime(LocalDateTime datetime) {
-        this.datetime = datetime;
-    }
-
-    public int getDuree() {
-        return this.duree;
-    }
-
-    public void setDuree(int duree) {
-        this.duree = duree;
     }
 
     public EResEtat getEtat() {
@@ -85,8 +67,6 @@ public class Reservation implements Serializable {
         this.idBorne = idBorne;
     }
 
-    public boolean isValidForAccess() {
-        return !(getDatetime().isBefore(LocalDateTime.now()) || LocalDateTime.now().isAfter(getDatetime().plusMinutes(10))); // TODO changer for settings value
-    }
+    public abstract boolean isValidForAccess();
 
 }

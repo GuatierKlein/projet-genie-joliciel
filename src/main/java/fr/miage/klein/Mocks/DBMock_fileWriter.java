@@ -19,13 +19,13 @@ import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
-import fr.miage.klein.BusinessLogic.Reservation;
+
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class DBMock_fileWriter implements IDatabaseController, Serializable {
 
     List<Client> clientList = new ArrayList<>();
-    List<Reservation> reservationList = new ArrayList<>();
+    List<fr.miage.klein.BusinessLogic.Reservation.Reservation> reservationList = new ArrayList<>();
     List<Borne> borneList = new ArrayList<>();
     List<Immatriculation> presenceList = new ArrayList<>();
     List<Facture> factureList = new ArrayList<>();
