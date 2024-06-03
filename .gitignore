@@ -1,3 +1,4 @@
 target/
 bindist/
 .vscode/
+database.ser
