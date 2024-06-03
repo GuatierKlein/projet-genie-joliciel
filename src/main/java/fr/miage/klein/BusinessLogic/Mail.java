@@ -18,4 +18,8 @@ public class Mail implements Serializable {
         .matcher(emailAddress)
         .matches();
     }
+
+    public String toString() {
+        return mail;
+    }
 }
