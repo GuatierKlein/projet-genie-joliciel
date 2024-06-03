@@ -139,5 +139,11 @@ public class DBMock implements IDatabaseController {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReservationsPermanentesFromClient'");
     }
+
+    @Override
+    public void addReservationPermanente(ReservationPermanente reservation) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addReservation'");
+    }
     
 }

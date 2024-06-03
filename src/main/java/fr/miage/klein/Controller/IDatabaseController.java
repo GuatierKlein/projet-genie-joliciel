@@ -31,6 +31,7 @@ public interface IDatabaseController {
     public void deleteReservation();
     public void updateReservation(Reservation reservation);
     public void addReservation(Reservation reservation);
+    public void addReservationPermanente(ReservationPermanente reservation);
 
     //résevrations permanentes
     public List<ReservationPermanente> getReservationsPermanentesFromClient(Mail mailClient);
