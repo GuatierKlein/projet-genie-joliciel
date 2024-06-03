@@ -15,11 +15,13 @@ import java.util.Optional;
 
 import fr.miage.klein.BusinessLogic.Borne;
 import fr.miage.klein.BusinessLogic.Client;
+import fr.miage.klein.BusinessLogic.EBorneEtat;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
-
+import fr.miage.klein.BusinessLogic.Reservation.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class DBMock_fileWriter implements IDatabaseController, Serializable {
@@ -211,6 +213,30 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     @Override
     public List<Immatriculation> getPresence() {
         return presenceList;
+    }
+
+    @Override
+    public void addReservationPermanente(ReservationPermanente reservation) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addReservationPermanente'");
+    }
+
+    @Override
+    public List<ReservationPermanente> getReservationsPermanentesFromClient(Mail mailClient) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservationsPermanentesFromClient'");
+    }
+
+    @Override
+    public void updateBorneEtat(EBorneEtat etat) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateBorneEtat'");
+    }
+
+    @Override
+    public Borne getBorne(int id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getBorne'");
     }
 
 }

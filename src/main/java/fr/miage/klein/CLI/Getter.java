@@ -5,7 +5,7 @@ import java.util.List;
 import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
-import fr.miage.klein.BusinessLogic.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.Reservation;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class Getter {
@@ -40,8 +40,8 @@ public class Getter {
             System.out.println("--");
             System.out.println("Numéro : " + reservation.getId());
             System.out.println("Borne : " + reservation.getIdBorne());
-            System.out.println("Horaire : " + reservation.getDatetime());
-            System.out.println("Durée : " + reservation.getDuree() + " minutes");
+            // System.out.println("Horaire : " + reservation.getDatetime());
+            // System.out.println("Durée : " + reservation.getDuree() + " minutes");
             System.out.println("--");
         }
     } 
