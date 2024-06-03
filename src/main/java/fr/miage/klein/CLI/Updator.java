@@ -63,6 +63,7 @@ public class Updator {
         } catch (NumberFormatException e) {
             System.err.println(e);
         } 
+        in.close();
     }
 
     public static void updateReservationSupplement(){
@@ -79,6 +80,7 @@ public class Updator {
         } catch (NumberFormatException e) {
             System.err.println(e);
         } 
+        in.close();
     }
 
     public static void updateChargeFeePerHour(){
@@ -94,7 +96,8 @@ public class Updator {
             System.out.println("Le nouveau tarif horaire de charge est de : "+ tarifHoraireCharge + " " + Facture.getDEVISE_PAR_DEFAUT());
         } catch (NumberFormatException e) {
             System.err.println(e);
-        } 
+        }
+        in.close(); 
     }
 
     public static void updatePenaltyFeesParameters(){
@@ -114,6 +117,7 @@ public class Updator {
         } catch (NumberFormatException e) {
             System.err.println(e);
         } 
+        in.close();
     }
 
     public static void updateDefaultCurrency(){
@@ -126,6 +130,7 @@ public class Updator {
             Facture.setDEVISE_PAR_DEFAUT(userInput);
             System.out.println("La nouvelle devise est " + userInput);
         }
+        in.close();
     }
 
     public static void updateReservationExtensionDuration(){
@@ -141,7 +146,8 @@ public class Updator {
             System.out.println("La durée du prolongement est de " + nbMinProl + "min, = " + nbMinProl/60 +"h");
         } catch (NumberFormatException e) {
             System.err.println(e);
-        } 
+        }
+        in.close(); 
     }
 
     public static void updateWaitingDelay(){
@@ -155,6 +161,7 @@ public class Updator {
         } catch (NumberFormatException e) {
             System.err.println(e);
         } 
+        in.close();
     }
 
     public static void helpUpdate() {
