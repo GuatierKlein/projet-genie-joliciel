@@ -39,4 +39,5 @@ public interface IDatabaseController {
     public void addPresence(Immatriculation immat);
     public boolean isPresent(Immatriculation immat);
     public void deletePresence(Immatriculation immat);
+    public List<Immatriculation> getPresence();
 }

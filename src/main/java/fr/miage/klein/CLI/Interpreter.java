@@ -46,6 +46,7 @@ public class Interpreter {
         System.out.println("* create <type> : tapez create help pour plus d'info");
         System.out.println("* access <type> <num> : tapez access help pour plus d'info");
         System.out.println("* leave <type> <num> : tapez leave help pour plus d'info");
+        System.out.println("* get <type> : tapez get help pour plus d'info");
         System.out.println("**********");
     }
 

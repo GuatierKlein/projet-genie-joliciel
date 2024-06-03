@@ -204,4 +204,9 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
         write();
     }
 
+    @Override
+    public List<Immatriculation> getPresence() {
+        return presenceList;
+    }
+
 }

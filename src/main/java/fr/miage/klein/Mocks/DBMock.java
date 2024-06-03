@@ -129,5 +129,11 @@ public class DBMock implements IDatabaseController {
     public Client getClient(Mail mail) {
         return new Client("Théodore", "Muller", "26 rue des Théodore", "0645316575", mail, 123456);
     }
+
+    @Override
+    public List<Immatriculation> getPresence() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPresence'");
+    }
     
 }
