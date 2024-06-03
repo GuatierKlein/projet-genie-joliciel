@@ -26,7 +26,6 @@ public class Creator {
         Mail email = new Mail(in.nextLine());
         System.out.print("Num CB : ");
         long numCb = Long.parseLong(in.nextLine());
-        in.close();
         return new Client(prenom, nom, adresse, numTel, email, numCb); 
     }
 
@@ -42,7 +41,6 @@ public class Creator {
         System.out.print("Immatriculation : ");
         Immatriculation immat = new Immatriculation(in.nextLine());
 
-        in.close();
         Client client = db.getClient(mail);
         if(client == null)
             throw new Exception("EMail associé à aucun compte");
