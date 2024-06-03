@@ -9,7 +9,6 @@ import fr.miage.klein.BusinessLogic.NumReservation;
 
 public abstract class Reservation implements Serializable{
     private NumReservation id;
-    
     private EResEtat etat;
     private Mail mailClient;
     private Immatriculation immat;

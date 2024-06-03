@@ -43,14 +43,34 @@ class Frais {
     String devise
 }
 
-class Reservation {
+abstract Reservation {
     int id 
-    Datetime datetime 
-    int duree 
     EResEtat etat
     Mail mailClient;
     String immat;
     int idBorne;
+}
+
+class ReservationPermanente extends Reservation{
+    List<JourPlage> jourPlage;
+    EMois mois;
+    int nbMois;
+    int annee;
+}
+
+class ReservationTemporaire extends Reservation {
+    Datetime datetime 
+    int duree 
+}
+
+class JourPlage {
+    EJour jour;
+    PlageHoraire plageHoraire;
+}
+
+class PlageHoraire {
+    LocalTime debut;
+    LocalTime fin;
 }
 
 class Interpreter {
@@ -84,11 +104,38 @@ enum EResEtat {
     EnAttente
 }
 
+enum EMois {
+    Janvier
+    Février
+    Mars
+    Avril
+    Mai
+    Juin
+    Juillet
+    Août
+    Septembre
+    Octobre
+    Novembre
+    Decembre
+}
+
+enum EJour {
+    Lundi
+    Mardi
+    Mercredi
+    Jeudi
+    Vendredi
+    Samedi
+    Dimanche
+}
+
 Client "*" -- "1" Mail
 Reservation "*" -- "1" Client 
 Reservation "*" -- "1" Borne 
 Transaction "*" -- "1" Client
 Facture "0..1" -- "1" Transaction
 Facture "*" -- "1" Frais
+ReservationPermanente "*" -- "*" JourPlage
+JourPlage "1" -- "1" PlageHoraire
 
 @enduml
