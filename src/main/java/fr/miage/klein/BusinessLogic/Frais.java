@@ -2,13 +2,15 @@ package fr.miage.klein.BusinessLogic;
 
 import java.io.Serializable;
 
+import fr.miage.klein.Controller.IDatabaseController;
+
 public class Frais implements Serializable {
     private Float montant; 
     private String devise;
 
-    public Frais(){
+    public Frais(IDatabaseController db){
         montant = (float) 0;
-        devise = Facture.getDEVISE_PAR_DEFAUT();
+        devise = db.getCurrency();
     }
 
     public Frais(Float montant, String devise) {

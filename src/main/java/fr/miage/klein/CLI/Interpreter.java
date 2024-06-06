@@ -176,25 +176,25 @@ public class Interpreter {
                     db.updateBorneEtat(borneUpdated.getEtat());
                     break;
                 case "param-prix-res-h":
-                    Updator.updateReservationFeePerHour();
+                    Updator.updateReservationFeePerHour(db);
                     break;
                 case "param-prix-res-suppl":
-                    Updator.updateReservationSupplement();
+                    Updator.updateReservationSupplement(db);
                     break;
                 case "param-prix-charge-h":
-                    Updator.updateChargeFeePerHour();
+                    Updator.updateChargeFeePerHour(db);
                     break;
                 case "param-prix-pen":
-                    Updator.updatePenaltyFeesParameters();
+                    Updator.updatePenaltyFeesParameters(db);
                     break;
                 case "param-default-currency":
-                    Updator.updateDefaultCurrency();
+                    Updator.updateDefaultCurrency(db);
                     break;
                 case "param-res-extension-duration":
-                    Updator.updateReservationExtensionDuration();
+                    Updator.updateReservationExtensionDuration(db);
                     break;
                 case "param-waiting-delay":
-                    Updator.updateReservationExtensionDuration();
+                    Updator.updateReservationExtensionDuration(db);
                     break;
                 default:
                 throw new IllegalArgumentException("Arguments invalides");

@@ -51,4 +51,20 @@ public interface IDatabaseController {
     public void updateBorneEtat(EBorneEtat etat);
     public Borne getBorne(int id);
     public List<Immatriculation> getPresence();
+
+    //settings 
+    public String getCurrency();
+    public void setCurrency(String cur);
+    public float getTarifHoraire();
+    public void setTarifHoraire(float value);
+    public float getDureeProlongement();
+    public void setDureeProlongement(float value);
+    public float getTarifSupplement();
+    public void setTarifSupplement(float value);
+    public float getTarifHoraireCharge();
+    public void setTarifHoraireCharge(float value);
+    public float getTarifPenalite();
+    public void setTarifPenalite(float value);
+    public float getTauxAugmentationMin();
+    public void setTauxAugmentationMin(float value);
 }

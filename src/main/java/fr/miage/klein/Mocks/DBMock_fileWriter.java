@@ -26,11 +26,18 @@ import fr.miage.klein.Controller.IDatabaseController;
 
 public class DBMock_fileWriter implements IDatabaseController, Serializable {
 
-    List<Client> clientList = new ArrayList<>();
-    List<fr.miage.klein.BusinessLogic.Reservation.Reservation> reservationList = new ArrayList<>();
-    List<Borne> borneList = new ArrayList<>();
-    List<Immatriculation> presenceList = new ArrayList<>();
-    List<Facture> factureList = new ArrayList<>();
+    private List<Client> clientList = new ArrayList<>();
+    private List<fr.miage.klein.BusinessLogic.Reservation.Reservation> reservationList = new ArrayList<>();
+    private List<Borne> borneList = new ArrayList<>();
+    private List<Immatriculation> presenceList = new ArrayList<>();
+    private List<Facture> factureList = new ArrayList<>();
+    private String DEVISE_PAR_DEFAUT = "EUR";
+    private float TARIF_HORAIRE_RES = 10;
+    private float DUREE_PROLONGEMENT_HEURE = (float) 0.25; // 15 min
+    private float TARIF_SUPPLEMENT_RES = 2;
+    private float TARIF_HORAIRE_CHARGE = 5;
+    private float TARIF_PENALITE_INIT = 1;
+    private float TAUX_AUGMENTATION_MIN = (float) 1.05;
 
     public DBMock_fileWriter() throws FileNotFoundException {
         File f = new File("database.ser");
@@ -237,6 +244,76 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     public Borne getBorne(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getBorne'");
+    }
+
+    @Override
+    public String getCurrency() {
+        return DEVISE_PAR_DEFAUT;
+    }
+
+    @Override
+    public void setCurrency(String cur) {
+        DEVISE_PAR_DEFAUT = cur;
+    }
+
+    @Override
+    public float getTarifHoraire() {
+        return TARIF_HORAIRE_RES;
+    }
+
+    @Override
+    public void setTarifHoraire(float value) {
+        TARIF_HORAIRE_RES = value;
+    }
+
+    @Override
+    public float getDureeProlongement() {
+        return DUREE_PROLONGEMENT_HEURE;
+    }
+
+    @Override
+    public void setDureeProlongement(float value) {
+        DUREE_PROLONGEMENT_HEURE = value;
+    }
+
+    @Override
+    public float getTarifSupplement() {
+        return TARIF_SUPPLEMENT_RES;
+    }
+
+    @Override
+    public void setTarifSupplement(float value) {
+        TARIF_SUPPLEMENT_RES = value;
+    }
+
+    @Override
+    public float getTarifHoraireCharge() {
+        return TARIF_HORAIRE_CHARGE;
+    }
+
+    @Override
+    public void setTarifHoraireCharge(float value) {
+        TARIF_HORAIRE_CHARGE = value;
+    }
+
+    @Override
+    public float getTarifPenalite() {
+        return TARIF_PENALITE_INIT;
+    }
+
+    @Override
+    public void setTarifPenalite(float value) {
+        TARIF_PENALITE_INIT = value;
+    }
+
+    @Override
+    public float getTauxAugmentationMin() {
+        return TAUX_AUGMENTATION_MIN;
+    }
+
+    @Override
+    public void setTauxAugmentationMin(float value) {
+        TAUX_AUGMENTATION_MIN = value;
     }
 
 }

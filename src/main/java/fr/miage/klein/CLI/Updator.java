@@ -7,6 +7,7 @@ import java.util.Scanner;
 import fr.miage.klein.BusinessLogic.Borne;
 import fr.miage.klein.BusinessLogic.EBorneEtat;
 import fr.miage.klein.BusinessLogic.Facture;
+import fr.miage.klein.Controller.IDatabaseController;
 import fr.miage.klein.Mocks.DBMock;
 
 public class Updator {
@@ -50,7 +51,7 @@ public class Updator {
 
     }
 
-    public static void updateReservationFeePerHour() {
+    public static void updateReservationFeePerHour(IDatabaseController db) {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive du paramètre prix de réservation par heure : ");
         System.out.print("Saisie du prix : ");
@@ -59,16 +60,16 @@ public class Updator {
 
         try {
             float tarifHoraireRes = Float.parseFloat(userInput);
-            Facture.setTARIF_HORAIRE_RES(tarifHoraireRes);
+            db.setTarifHoraire(tarifHoraireRes);
             System.out.println("Le nouveau tarif horaire des réservations est de : " + tarifHoraireRes + " "
-                    + Facture.getDEVISE_PAR_DEFAUT());
+                    + db.getCurrency());
         } catch (NumberFormatException e) {
             System.err.println(e);
         }
         in.close();
     }
 
-    public static void updateReservationSupplement() {
+    public static void updateReservationSupplement(IDatabaseController db) {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive du paramètre prix du supplément de réservation : ");
         System.out.print("Saisie du prix : ");
@@ -77,16 +78,16 @@ public class Updator {
 
         try {
             float tarifSupplRes = Float.parseFloat(userInput);
-            Facture.setTARIF_SUPPLEMENT_RES(tarifSupplRes);
+            db.setTarifSupplement(tarifSupplRes);
             System.out.println("Le nouveau tarif du supplément de réservation edt de : " + tarifSupplRes + " "
-                    + Facture.getDEVISE_PAR_DEFAUT());
+                    + db.getCurrency());
         } catch (NumberFormatException e) {
             System.err.println(e);
         }
         in.close();
     }
 
-    public static void updateChargeFeePerHour() {
+    public static void updateChargeFeePerHour(IDatabaseController db) {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive du paramètre prix de charge par heure : ");
         System.out.print("Saisie du prix : ");
@@ -95,16 +96,16 @@ public class Updator {
 
         try {
             float tarifHoraireCharge = Float.parseFloat(userInput);
-            Facture.setTARIF_HORAIRE_CHARGE(tarifHoraireCharge);
+            db.setTarifHoraireCharge(tarifHoraireCharge);
             System.out.println("Le nouveau tarif horaire de charge est de : " + tarifHoraireCharge + " "
-                    + Facture.getDEVISE_PAR_DEFAUT());
+                    + db.getCurrency());
         } catch (NumberFormatException e) {
             System.err.println(e);
         }
         in.close();
     }
 
-    public static void updatePenaltyFeesParameters() {
+    public static void updatePenaltyFeesParameters(IDatabaseController db) {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive des paramètres permettant de calculer les frais de pénalités : ");
         System.out.print("Saisie du prix initial de la pénalité : ");
@@ -114,10 +115,10 @@ public class Updator {
 
         try {
             float tarifPenInit = Float.parseFloat(userInput);
-            Facture.setTARIF_PENALITE_INIT(tarifPenInit);
+            db.setTarifPenalite(tarifPenInit);
             float coeffAugPen = Float.parseFloat(userInput2);
-            Facture.setTAUX_AUGMENTATION_MIN(coeffAugPen);
-            System.out.println("Le nouveau prix intial est de : " + tarifPenInit + " " + Facture.getDEVISE_PAR_DEFAUT()
+            db.setTauxAugmentationMin(coeffAugPen);
+            System.out.println("Le nouveau prix intial est de : " + tarifPenInit + " " + db.getCurrency()
                     + " ce prix sera multiplié chaque minute par " + coeffAugPen);
         } catch (NumberFormatException e) {
             System.err.println(e);
@@ -125,20 +126,20 @@ public class Updator {
         in.close();
     }
 
-    public static void updateDefaultCurrency() {
+    public static void updateDefaultCurrency(IDatabaseController db) {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive de la devise par défaut : ");
         System.out.print("Saisie de la devise : ");
         String userInput = in.nextLine();
 
         if (!userInput.isEmpty()) {
-            Facture.setDEVISE_PAR_DEFAUT(userInput);
+            db.setCurrency(userInput);
             System.out.println("La nouvelle devise est " + userInput);
         }
         in.close();
     }
 
-    public static void updateReservationExtensionDuration() {
+    public static void updateReservationExtensionDuration(IDatabaseController db) {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive de la durée du prolongement d'une réservation : ");
         System.out.print("Saisie le nombre de minutes ajouté à une réservation lors d'un prolongement : ");
@@ -147,7 +148,7 @@ public class Updator {
 
         try {
             float nbMinProl = Float.parseFloat(userInput);
-            Facture.setDUREE_PROLONGEMENT_HEURE(nbMinProl / 60);
+            db.setDureeProlongement(nbMinProl / 60);
             System.out.println("La durée du prolongement est de " + nbMinProl + "min, = " + nbMinProl / 60 + "h");
         } catch (NumberFormatException e) {
             System.err.println(e);

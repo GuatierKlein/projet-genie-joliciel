@@ -163,5 +163,89 @@ public class DBMock implements IDatabaseController {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getPresence'");
     }
+
+    @Override
+    public String getCurrency() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCurrency'");
+    }
+
+    @Override
+    public void setCurrency(String cur) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCurrencu'");
+    }
+
+    @Override
+    public float getTarifHoraire() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTarifHoraire'");
+    }
+
+    @Override
+    public void setTarifHoraire(float value) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTarifHoraire'");
+    }
+
+    @Override
+    public float getDureeProlongement() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDureeProlongement'");
+    }
+
+    @Override
+    public void setDureeProlongement(float value) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDureeProlongement'");
+    }
+
+    @Override
+    public float getTarifSupplement() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTarifSupplement'");
+    }
+
+    @Override
+    public void setTarifSupplement(float value) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTarifSupplement'");
+    }
+
+    @Override
+    public float getTarifHoraireCharge() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTarifHoraireCharge'");
+    }
+
+    @Override
+    public void setTarifHoraireCharge(float value) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTarifHoraireCharge'");
+    }
+
+    @Override
+    public float getTarifPenalite() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTarifPenalite'");
+    }
+
+    @Override
+    public void setTarifPenalite(float value) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTarifPenalite'");
+    }
+
+    @Override
+    public float getTauxAugmentationMin() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTauxAugmentationMin'");
+    }
+
+    @Override
+    public void setTauxAugmentationMin(float value) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTauxAugmentationMin'");
+    }
     
 }
