@@ -20,147 +20,153 @@ public class Updator {
         } catch (Exception e) {
             System.err.println(e);
         }
-        if (numBorne != 0){
-        DBMock db = new DBMock();
-        Borne borne = db.getBorne(numBorne);
-        if (borne != null){
-        System.out.println("saisir l'état de la borne parmis Disponible, Indisponible, Reservee, Occupee: ");
-        String etat = in.next();
-        try {
-            for (EBorneEtat e : EBorneEtat.values()){
-                if (e.toString().equalsIgnoreCase(etat));
-                borne.setEtat(e);
-                break;
+        if (numBorne != 0) {
+            DBMock db = new DBMock();
+            Borne borne = db.getBorne(numBorne);
+            if (borne != null) {
+                System.out.println("saisir l'état de la borne parmis Disponible, Indisponible, Reservee, Occupee: ");
+                String etat = in.next();
+                try {
+                    for (EBorneEtat e : EBorneEtat.values()) {
+                        if (e.toString().equalsIgnoreCase(etat))
+                            ;
+                        borne.setEtat(e);
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.err.println(e);
+                }
+                return borne;
             }
-        } catch (Exception e) {
-            System.err.println(e);
         }
-        in.close();
-        return borne;}}
-        in.close();
         return null;
     }
 
-    public static void updateSettings(){
+    public static void updateSettings() {
 
     }
 
-    public static void updateSettingWaitingPeriod(){
+    public static void updateSettingWaitingPeriod() {
 
     }
-    
-    public static void updateReservationFeePerHour(){
+
+    public static void updateReservationFeePerHour() {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive du paramètre prix de réservation par heure : ");
         System.out.print("Saisie du prix : ");
-        
+
         String userInput = in.nextLine();
-        
+
         try {
             float tarifHoraireRes = Float.parseFloat(userInput);
             Facture.setTARIF_HORAIRE_RES(tarifHoraireRes);
-            System.out.println("Le nouveau tarif horaire des réservations est de : "+ tarifHoraireRes + " " + Facture.getDEVISE_PAR_DEFAUT());
-        } catch (NumberFormatException e) {
-            System.err.println(e);
-        } 
-        in.close();
-    }
-
-    public static void updateReservationSupplement(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Modification interactive du paramètre prix du supplément de réservation : ");
-        System.out.print("Saisie du prix : ");
-        
-        String userInput = in.nextLine();
-        
-        try {
-            float tarifSupplRes = Float.parseFloat(userInput);
-            Facture.setTARIF_SUPPLEMENT_RES(tarifSupplRes);
-            System.out.println("Le nouveau tarif du supplément de réservation edt de : "+ tarifSupplRes + " " + Facture.getDEVISE_PAR_DEFAUT());
-        } catch (NumberFormatException e) {
-            System.err.println(e);
-        } 
-        in.close();
-    }
-
-    public static void updateChargeFeePerHour(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Modification interactive du paramètre prix de charge par heure : ");
-        System.out.print("Saisie du prix : ");
-        
-        String userInput = in.nextLine();
-        
-        try {
-            float tarifHoraireCharge = Float.parseFloat(userInput);
-            Facture.setTARIF_HORAIRE_CHARGE(tarifHoraireCharge);
-            System.out.println("Le nouveau tarif horaire de charge est de : "+ tarifHoraireCharge + " " + Facture.getDEVISE_PAR_DEFAUT());
+            System.out.println("Le nouveau tarif horaire des réservations est de : " + tarifHoraireRes + " "
+                    + Facture.getDEVISE_PAR_DEFAUT());
         } catch (NumberFormatException e) {
             System.err.println(e);
         }
-        in.close(); 
+        in.close();
     }
 
-    public static void updatePenaltyFeesParameters(){
+    public static void updateReservationSupplement() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Modification interactive du paramètre prix du supplément de réservation : ");
+        System.out.print("Saisie du prix : ");
+
+        String userInput = in.nextLine();
+
+        try {
+            float tarifSupplRes = Float.parseFloat(userInput);
+            Facture.setTARIF_SUPPLEMENT_RES(tarifSupplRes);
+            System.out.println("Le nouveau tarif du supplément de réservation edt de : " + tarifSupplRes + " "
+                    + Facture.getDEVISE_PAR_DEFAUT());
+        } catch (NumberFormatException e) {
+            System.err.println(e);
+        }
+        in.close();
+    }
+
+    public static void updateChargeFeePerHour() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Modification interactive du paramètre prix de charge par heure : ");
+        System.out.print("Saisie du prix : ");
+
+        String userInput = in.nextLine();
+
+        try {
+            float tarifHoraireCharge = Float.parseFloat(userInput);
+            Facture.setTARIF_HORAIRE_CHARGE(tarifHoraireCharge);
+            System.out.println("Le nouveau tarif horaire de charge est de : " + tarifHoraireCharge + " "
+                    + Facture.getDEVISE_PAR_DEFAUT());
+        } catch (NumberFormatException e) {
+            System.err.println(e);
+        }
+        in.close();
+    }
+
+    public static void updatePenaltyFeesParameters() {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive des paramètres permettant de calculer les frais de pénalités : ");
-        System.out.print("Saisie du prix initial de la pénalité : "); 
+        System.out.print("Saisie du prix initial de la pénalité : ");
         String userInput = in.nextLine();
-        System.out.print("Saisie du coefficient d'augmentation du prix initial chaque minute : "); 
+        System.out.print("Saisie du coefficient d'augmentation du prix initial chaque minute : ");
         String userInput2 = in.nextLine();
-        
+
         try {
             float tarifPenInit = Float.parseFloat(userInput);
             Facture.setTARIF_PENALITE_INIT(tarifPenInit);
             float coeffAugPen = Float.parseFloat(userInput2);
             Facture.setTAUX_AUGMENTATION_MIN(coeffAugPen);
-            System.out.println("Le nouveau prix intial est de : "+ tarifPenInit + " " + Facture.getDEVISE_PAR_DEFAUT() + " ce prix sera multiplié chaque minute par " + coeffAugPen);
+            System.out.println("Le nouveau prix intial est de : " + tarifPenInit + " " + Facture.getDEVISE_PAR_DEFAUT()
+                    + " ce prix sera multiplié chaque minute par " + coeffAugPen);
         } catch (NumberFormatException e) {
             System.err.println(e);
-        } 
+        }
         in.close();
     }
 
-    public static void updateDefaultCurrency(){
+    public static void updateDefaultCurrency() {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive de la devise par défaut : ");
-        System.out.print("Saisie de la devise : "); 
+        System.out.print("Saisie de la devise : ");
         String userInput = in.nextLine();
 
-        if (!userInput.isEmpty()){
+        if (!userInput.isEmpty()) {
             Facture.setDEVISE_PAR_DEFAUT(userInput);
             System.out.println("La nouvelle devise est " + userInput);
         }
         in.close();
     }
 
-    public static void updateReservationExtensionDuration(){
+    public static void updateReservationExtensionDuration() {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive de la durée du prolongement d'une réservation : ");
         System.out.print("Saisie le nombre de minutes ajouté à une réservation lors d'un prolongement : ");
-        
+
         String userInput = in.nextLine();
-        
+
         try {
             float nbMinProl = Float.parseFloat(userInput);
-            Facture.setDUREE_PROLONGEMENT_HEURE(nbMinProl/60);
-            System.out.println("La durée du prolongement est de " + nbMinProl + "min, = " + nbMinProl/60 +"h");
+            Facture.setDUREE_PROLONGEMENT_HEURE(nbMinProl / 60);
+            System.out.println("La durée du prolongement est de " + nbMinProl + "min, = " + nbMinProl / 60 + "h");
         } catch (NumberFormatException e) {
             System.err.println(e);
         }
-        in.close(); 
+        in.close();
     }
 
-    public static void updateWaitingDelay(){
+    public static void updateWaitingDelay() {
         Scanner in = new Scanner(System.in);
         System.out.println("Modification interactive du délai d'attente d'une borne en cas de retard : ");
-        System.out.print("Saisie le nombre de minutes (nombre entier) ajouté à une réservation lors d'un prolongement : ");
-        
+        System.out.print(
+                "Saisie le nombre de minutes (nombre entier) ajouté à une réservation lors d'un prolongement : ");
+
         try {
             Borne.setDureeAttente(Duration.ofMinutes(in.nextLong()));
-            System.out.println("Le nouveau délai d'attente est de " + Borne.getDureeAttente() +" min");
+            System.out.println("Le nouveau délai d'attente est de " + Borne.getDureeAttente() + " min");
         } catch (NumberFormatException e) {
             System.err.println(e);
-        } 
+        }
         in.close();
     }
 
@@ -172,9 +178,11 @@ public class Updator {
         System.out.println("* update param-prix-res-h : modifie le tarif horaire de réservation");
         System.out.println("* update param-prix-res-suppl : modifie le prix du supplément de réservation");
         System.out.println("* update param-prix-charge-h : modifie le tarif horaire de charge");
-        System.out.println("* update param-prix-pen : modifie les paramètres permettant de calculer les frais de pénalités");
+        System.out.println(
+                "* update param-prix-pen : modifie les paramètres permettant de calculer les frais de pénalités");
         System.out.println("* update param-default-currency : modifie la devise par défaut");
-        System.out.println("* update param-res-extension-duration : modifie la durée du prolongement d'une réservation");
+        System.out
+                .println("* update param-res-extension-duration : modifie la durée du prolongement d'une réservation");
         System.out.println("* update param-waiting-delay : modifie le délai d'attente d'une borne en cas de retard");
         System.out.println("**********");
     }
