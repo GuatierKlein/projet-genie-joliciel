@@ -9,7 +9,6 @@ import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
-import fr.miage.klein.BusinessLogic.Reservation.Reservation;
 import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
 import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 
