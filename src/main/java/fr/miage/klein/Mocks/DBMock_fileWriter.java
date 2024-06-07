@@ -161,7 +161,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     }
 
     @Override
-    public ReservationTemporaire getReservationTemporaires(NumReservation id) {
+    public ReservationTemporaire getReservationTemporaire(NumReservation id) {
         Optional<ReservationTemporaire> res = reservationTemporaireList.stream().filter(x -> x.getId() == id).findAny();
         return res.get();
     }
@@ -322,6 +322,30 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     public void setTauxAugmentationMin(float value) {
         TAUX_AUGMENTATION_MIN = value;
         write();
+    }
+
+    @Override
+    public List<Reservation> getReservations() {
+        List<Reservation> res = new ArrayList<>();
+        res.addAll(reservationTemporaireList);
+        res.addAll(reservationPermanenteList);
+        return res;
+    }
+
+    @Override
+    public Reservation getReservation(NumReservation id) {
+        List<Reservation> res = new ArrayList<>();
+        res.addAll(reservationTemporaireList);
+        res.addAll(reservationPermanenteList);
+        return res.stream().filter(x -> x.getId().equals(id)).findAny().get();
+    }
+
+    @Override
+    public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
+        List<Reservation> res = new ArrayList<>();
+        res.addAll(reservationTemporaireList);
+        res.addAll(reservationPermanenteList);
+        return res.stream().filter(x -> x.getImmat().equals(immat)).toList();
     }
 
 }

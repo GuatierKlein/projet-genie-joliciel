@@ -9,6 +9,7 @@ import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
+import fr.miage.klein.BusinessLogic.Reservation.Reservation;
 import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
 import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 
@@ -28,7 +29,7 @@ public interface IDatabaseController {
     public void addFacture(Facture facture);
 
     //réservations
-    public ReservationTemporaire getReservationTemporaires(NumReservation id);
+    public ReservationTemporaire getReservationTemporaire(NumReservation id);
     public List<ReservationTemporaire> getReservationsTemporaires();
     public void deleteReservationTemporaire(NumReservation id);
     public void updateReservationTemporaire(ReservationTemporaire reservation);
@@ -37,6 +38,10 @@ public interface IDatabaseController {
     //résevrations permanentes
     public List<ReservationPermanente> getReservationsPermanentesFromClient(Mail mailClient);
     public void addReservationPermanente(ReservationPermanente reservation);
+
+    public List<Reservation> getReservations();
+    public Reservation getReservation(NumReservation id);
+    public List<Reservation> getReservationsFromImmat(Immatriculation immat);
 
     //immat 
     public boolean existsImmat(Immatriculation immat);
