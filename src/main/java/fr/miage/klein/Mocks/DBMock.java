@@ -109,7 +109,7 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public ReservationTemporaire getReservationTemporaires(NumReservation id) {
+    public ReservationTemporaire getReservationTemporaire(NumReservation id) {
         return new ReservationTemporaire(id, LocalDateTime.now().plusMinutes(5), 60, EResEtat.EnAttente, new Mail("klein_gautier@yahoo.fr"), new Immatriculation("AA-229-AA"), 3);
     }
 
@@ -246,6 +246,24 @@ public class DBMock implements IDatabaseController {
     public void setTauxAugmentationMin(float value) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setTauxAugmentationMin'");
+    }
+
+    @Override
+    public List<Reservation> getReservations() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservations'");
+    }
+
+    @Override
+    public Reservation getReservation(NumReservation id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservation'");
+    }
+
+    @Override
+    public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservationsFromImmat'");
     }
     
 }
