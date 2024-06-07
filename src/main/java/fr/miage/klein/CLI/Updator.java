@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 import fr.miage.klein.BusinessLogic.Borne;
 import fr.miage.klein.BusinessLogic.EBorneEtat;
-import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.Controller.IDatabaseController;
 import fr.miage.klein.Mocks.DBMock;
 
@@ -28,17 +27,14 @@ public class Updator {
                 System.out.println("saisir l'état de la borne parmis Disponible, Indisponible, Reservee, Occupee: ");
                 String etat = in.next();
                 try {
-                    for (EBorneEtat e : EBorneEtat.values()) {
-                        if (e.toString().equalsIgnoreCase(etat))
-                            ;
-                        borne.setEtat(e);
-                        break;
+                    EBorneEtat e = EBorneEtat.valueOf(etat);
+                    borne.setEtat(e);
                     }
-                } catch (Exception e) {
-                    System.err.println(e);
-                }
-                return borne;
-            }
+                catch (IllegalArgumentException | NullPointerException error) {
+                        System.err.println(error);
+                    }
+            } 
+            return borne;    
         }
         return null;
     }
