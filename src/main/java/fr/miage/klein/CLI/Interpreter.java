@@ -139,7 +139,7 @@ public class Interpreter {
                 if(args.length < 2 || args.length > 2)
                     throw new IllegalArgumentException("Arguments invalides");
                 NumReservation numres = new NumReservation(args[1]);
-                ReservationTemporaire res = db.getReservationTemporaires(numres);
+                ReservationTemporaire res = db.getReservationTemporaire(numres);
                 db.deletePresence(res.getImmat());
                 break;
             case "help": leaveHelp();
