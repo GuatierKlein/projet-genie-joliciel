@@ -22,12 +22,14 @@ import fr.miage.klein.BusinessLogic.Mail;
 import fr.miage.klein.BusinessLogic.NumReservation;
 import fr.miage.klein.BusinessLogic.Reservation.Reservation;
 import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class DBMock_fileWriter implements IDatabaseController, Serializable {
 
     private List<Client> clientList = new ArrayList<>();
-    private List<fr.miage.klein.BusinessLogic.Reservation.Reservation> reservationList = new ArrayList<>();
+    private List<fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire> reservationTemporaireList = new ArrayList<>();
+    private List<fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente> reservationPermanenteList = new ArrayList<>();
     private List<Borne> borneList = new ArrayList<>();
     private List<Immatriculation> presenceList = new ArrayList<>();
     private List<Facture> factureList = new ArrayList<>();
@@ -159,32 +161,32 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     }
 
     @Override
-    public Reservation getReservation(NumReservation id) {
-        Optional<Reservation> res = reservationList.stream().filter(x -> x.getId() == id).findAny();
+    public ReservationTemporaire getReservationTemporaires(NumReservation id) {
+        Optional<ReservationTemporaire> res = reservationTemporaireList.stream().filter(x -> x.getId() == id).findAny();
         return res.get();
     }
 
     @Override
-    public List<Reservation> getReservations() {
-        return reservationList;
+    public List<ReservationTemporaire> getReservationsTemporaires() {
+        return reservationTemporaireList;
     }
 
     @Override
-    public void deleteReservation(NumReservation id) {
-        reservationList.removeIf(x -> x.getId().equals(id));
+    public void deleteReservationTemporaire(NumReservation id) {
+        reservationTemporaireList.removeIf(x -> x.getId().equals(id));
         write();
     }
 
     @Override
-    public void updateReservation(Reservation reservation) {
-        reservationList.removeIf(x -> x.getId().equals(reservation.getId()));
-        reservationList.add(reservation);
+    public void updateReservationTemporaire(ReservationTemporaire reservation) {
+        reservationTemporaireList.removeIf(x -> x.getId().equals(reservation.getId()));
+        reservationTemporaireList.add(reservation);
         write();
     }
 
     @Override
-    public void addReservation(Reservation reservation) {
-        reservationList.add(reservation);
+    public void addReservationTemporaire(ReservationTemporaire reservation) {
+        reservationTemporaireList.add(reservation);
         write();
     }
 
@@ -194,9 +196,9 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     }
 
     @Override
-    public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
-        List<Reservation> res = new LinkedList<>();
-        res.addAll(reservationList.stream().filter(x -> x.getImmat().equals(immat)).toList());
+    public List<ReservationTemporaire> getReservationsTemporaireFromImmat(Immatriculation immat) {
+        List<ReservationTemporaire> res = new LinkedList<>();
+        res.addAll(reservationTemporaireList.stream().filter(x -> x.getImmat().equals(immat)).toList());
         return res;
     }
 
@@ -224,14 +226,13 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
 
     @Override
     public void addReservationPermanente(ReservationPermanente reservation) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addReservationPermanente'");
+        reservationPermanenteList.add(reservation);
+        write();
     }
 
     @Override
     public List<ReservationPermanente> getReservationsPermanentesFromClient(Mail mailClient) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservationsPermanentesFromClient'");
+        return reservationPermanenteList.stream().filter(x -> x.getMailClient().equals(mailClient)).toList();
     }
 
     @Override
@@ -254,6 +255,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     @Override
     public void setCurrency(String cur) {
         DEVISE_PAR_DEFAUT = cur;
+        write();
     }
 
     @Override
@@ -264,6 +266,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     @Override
     public void setTarifHoraire(float value) {
         TARIF_HORAIRE_RES = value;
+        write();
     }
 
     @Override
@@ -274,6 +277,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     @Override
     public void setDureeProlongement(float value) {
         DUREE_PROLONGEMENT_HEURE = value;
+        write();
     }
 
     @Override
@@ -284,6 +288,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     @Override
     public void setTarifSupplement(float value) {
         TARIF_SUPPLEMENT_RES = value;
+        write();
     }
 
     @Override
@@ -294,6 +299,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     @Override
     public void setTarifHoraireCharge(float value) {
         TARIF_HORAIRE_CHARGE = value;
+        write();
     }
 
     @Override
@@ -304,6 +310,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     @Override
     public void setTarifPenalite(float value) {
         TARIF_PENALITE_INIT = value;
+        write();
     }
 
     @Override
@@ -314,6 +321,7 @@ public class DBMock_fileWriter implements IDatabaseController, Serializable {
     @Override
     public void setTauxAugmentationMin(float value) {
         TAUX_AUGMENTATION_MIN = value;
+        write();
     }
 
 }

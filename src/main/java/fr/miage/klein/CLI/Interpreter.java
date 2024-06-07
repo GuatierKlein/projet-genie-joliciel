@@ -11,6 +11,7 @@ import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessImmat;
 import fr.miage.klein.BusinessLogic.ParkAccess.ParkAccessRes;
 import fr.miage.klein.BusinessLogic.Reservation.Reservation;
 import fr.miage.klein.BusinessLogic.Reservation.ReservationPermanente;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class Interpreter {
@@ -77,8 +78,8 @@ public class Interpreter {
                 ReservationPermanente res = Creator.createReservationPermanenteIntractive();
                 db.addReservationPermanente(res);
             case "reservation":
-                Reservation reservation = Creator.createReservationIntractive(db);
-                db.addReservation(reservation);
+                ReservationTemporaire reservation = Creator.createReservationIntractive(db);
+                db.addReservationTemporaire(reservation);
                 break;
             default:
             throw new IllegalArgumentException("Arguments invalides");
@@ -139,7 +140,7 @@ public class Interpreter {
                 if(args.length < 2 || args.length > 2)
                     throw new IllegalArgumentException("Arguments invalides");
                 NumReservation numres = new NumReservation(args[1]);
-                Reservation res = db.getReservation(numres);
+                ReservationTemporaire res = db.getReservationTemporaires(numres);
                 db.deletePresence(res.getImmat());
                 break;
             case "help": leaveHelp();

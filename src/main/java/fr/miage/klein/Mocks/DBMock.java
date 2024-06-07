@@ -73,25 +73,25 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public List<Reservation> getReservations() {
+    public List<ReservationTemporaire> getReservationsTemporaires() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReservations'");
     }
 
     @Override
-    public void deleteReservation(NumReservation id) {
+    public void deleteReservationTemporaire(NumReservation id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteReservation'");
     }
 
     @Override
-    public void updateReservation(Reservation reservation) {
+    public void updateReservationTemporaire(ReservationTemporaire reservation) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateReservation'");
     }
 
     @Override
-    public void addReservation(Reservation reservation) {
+    public void addReservationTemporaire(ReservationTemporaire reservation) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'addReservation'");
     }
@@ -109,7 +109,7 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public Reservation getReservation(NumReservation id) {
+    public ReservationTemporaire getReservationTemporaires(NumReservation id) {
         return new ReservationTemporaire(id, LocalDateTime.now().plusMinutes(5), 60, EResEtat.EnAttente, new Mail("klein_gautier@yahoo.fr"), new Immatriculation("AA-229-AA"), 3);
     }
 
@@ -119,8 +119,8 @@ public class DBMock implements IDatabaseController {
     }
 
     @Override
-    public List<Reservation> getReservationsFromImmat(Immatriculation immat) {
-        ArrayList<Reservation> res = new ArrayList<>();
+    public List<ReservationTemporaire> getReservationsTemporaireFromImmat(Immatriculation immat) {
+        ArrayList<ReservationTemporaire> res = new ArrayList<>();
         
         res.add(new ReservationTemporaire(LocalDateTime.now().plusMinutes(5), 60, new Mail("klein_gautier@yahoo.fr"), immat));
         return res;
