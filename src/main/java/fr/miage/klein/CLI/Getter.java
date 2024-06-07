@@ -6,6 +6,7 @@ import fr.miage.klein.BusinessLogic.Client;
 import fr.miage.klein.BusinessLogic.Facture;
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Reservation.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class Getter {
@@ -34,7 +35,7 @@ public class Getter {
     } 
 
     public static void getReservations(IDatabaseController db) {
-        List<Reservation> reservations = db.getReservations();
+        List<ReservationTemporaire> reservations = db.getReservationsTemporaires();
         System.out.println("Liste des réservations :");
         for (Reservation reservation : reservations) {
             System.out.println("--");

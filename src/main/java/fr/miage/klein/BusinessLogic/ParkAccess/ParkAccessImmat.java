@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.miage.klein.BusinessLogic.Immatriculation;
 import fr.miage.klein.BusinessLogic.Reservation.Reservation;
+import fr.miage.klein.BusinessLogic.Reservation.ReservationTemporaire;
 import fr.miage.klein.Controller.IDatabaseController;
 
 public class ParkAccessImmat extends ParkAccess {
@@ -27,7 +28,7 @@ public class ParkAccessImmat extends ParkAccess {
         if(!db.existsImmat(value) && !db.isPresent(value))
             return false;
 
-        List<Reservation> res = db.getReservationsFromImmat(value);
+        List<ReservationTemporaire> res = db.getReservationsTemporaireFromImmat(value);
         if(!isOneResValid(res))
             return false;
         return true;

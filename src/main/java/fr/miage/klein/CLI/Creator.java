@@ -37,7 +37,7 @@ public class Creator {
         return new Client(prenom, nom, adresse, numTel, email, numCb); 
     }
 
-    public static Reservation createReservationIntractive(IDatabaseController db) throws Exception {
+    public static ReservationTemporaire createReservationIntractive(IDatabaseController db) throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.println("Création interactive d'une réservation :");
         System.out.print("Mail : ");
@@ -67,12 +67,13 @@ public class Creator {
         boolean continuer = true;
         do {
             System.out.print("Jour : (Lundi, Mardi...)");
-            EJour jour = EJour.Lundi;
-            for (EJour j : EJour.values()) {
-                if (j.toString().equalsIgnoreCase(in.nextLine())) {
-                    jour = j;
-                }
-            }
+            // EJour jour = EJour.Lundi;
+            // for (EJour j : EJour.values()) {
+            //     if (j.toString().equalsIgnoreCase(in.nextLine())) {
+            //         jour = j;
+            //     }
+            // }
+            EJour jour = EJour.valueOf(in.nextLine());
             System.out.print("Horaire de début :");
             LocalTime debut = LocalTime.parse(in.nextLine());
             System.out.print("Horaire de fin :");
@@ -85,17 +86,17 @@ public class Creator {
                 continuer = false;
         } while (continuer);
         System.out.print("A partir de quel mois :");
-        EMois mois = EMois.Janvier;
-        for (EMois m : EMois.values()) {
-            if (m.toString().equalsIgnoreCase(in.nextLine())) {
-                mois = m;
-            }
-        }
+        // EMois mois = EMois.Janvier;
+        // for (EMois m : EMois.values()) {
+        //     if (m.toString().equalsIgnoreCase(in.nextLine())) {
+        //         mois = m;
+        //     }
+        // }
+        EMois mois = EMois.valueOf(in.nextLine());
         System.out.print("Quelle annee :");
         int annee = Integer.parseInt(in.nextLine());
         System.out.print("Combien de mois :");
         int nbMois = Integer.parseInt(in.nextLine());
-        in.close();
         return new ReservationPermanente(jp, mail, immat, mois, nbMois, annee);
     }
 
