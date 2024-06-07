@@ -23,7 +23,7 @@ public class ParkAccessRes extends ParkAccess {
 
     @Override
     public void save() {
-        Reservation res = db.getReservation(value);
+        Reservation res = db.getReservationTemporaire(value);
         db.addPresence(res.getImmat());
     }
 }
